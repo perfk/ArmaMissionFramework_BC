@@ -1,0 +1,6 @@
+
+Todo:
+	
+	1. Write Briefing
+	2. Find a mean of communication between sides?
+	3. Test on dedicated server

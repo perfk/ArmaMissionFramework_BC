@@ -1,0 +1,42 @@
+
+#include "settings.sqf"
+
+// Load Functions
+_functions = [
+	["settings_safetyWeapon", "modules\common\missionSettings\functions\fnc_safetyWeapon.sqf", [], true, CORE_LMS_player, cm_core_priority_last]
+];
+
+/*****************************/
+/* Initialization Code Below */
+/*        NO WAITING!        */
+/*****************************/
+
+/* Servers */
+if ([CORE_machine, CORE_LMS_aiHost] call CORE_fnc_isMachine) then {
+	setViewDistance _serverVD;
+	setTerrainGrid	_serverTG;
+};
+
+/* Players */
+if ([CORE_machine, CORE_LMS_player] call CORE_fnc_isMachine) then {
+	setViewDistance _clientVD;
+	setTerrainGrid	_clientTG;
+	missionNamespace setVariable ["ace_viewdistance_limit", _ace_settings_max_vd];
+	player setVariable ["BIS_noCoreConversations", _clientDisableGreetingMenu];
+	0 fadeRadio _clientRadioVolume;
+	if (_playerSafetyWeapon) then {
+		[] spawn {
+			waitUntil {CORE_init};
+			sleep 0.2;	// Wait for mission start
+			player addWeapon "ACE_Safe";
+			sleep 0.1; // Wait for next frame
+			player selectWeapon "ACE_Safe";
+			sleep 0.1;	// Wait for weapon switch
+			player playMove "aidlpknlmstpslowwrfldnon_idlesteady02";
+		};
+	};
+};
+
+/*****************************/
+/*  End Initialization Code  */
+/*****************************/
