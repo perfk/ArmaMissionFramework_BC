@@ -17,11 +17,9 @@ if ((_io == 1) && isServer) then {
 		private ["_index"];
 		_index = cm_core_storageKeysLookup find _x;
 		if (_index >= 0) then {
-			private ["_storageKey", "_tempData"];
+			private ["_storageKey"];
 			_storageKey = cm_core_storageKeys select _index;
-			_tempData = _storageKey call cm_core_fnc_queryGet;
-			_storageKey set [(count _storageKey), _tempData];
-			_returnData = _returnData + [_storageKey];
+			_returnData = _returnData + [[(_storageKey select 0), (_storageKey select 1), (_storageKey select 2), (_storageKey call cm_core_fnc_queryGet)]];
 		};
 	} forEach _data;
 	

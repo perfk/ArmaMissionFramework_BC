@@ -51,7 +51,7 @@ if (isServer) then {
 	msc_prisoners = [civ_1_1_0_prisoner, civ_1_2_0_prisoner];
 	msc_missionCO = [blu_1_6_0_sl, op_1_6_0_sl] + msc_warlords;
 	msc_extraction = [[WEST, false, 0], [EAST, false, 0]];
-	msc_timeToEnd = round((5 + random(5)) * 60);
+	msc_timeToEnd = round((2 + random(3)) * 60);
 	publicVariable "msc_missionEnding";
 	publicVariable "msc_warlords";
 	publicVariable "msc_prisoners";
@@ -95,7 +95,8 @@ if ([CORE_machine, CORE_LMS_player] call CORE_fnc_isMachine) then {
 				uiSleep 10;
 				sleep 0.1;
 				if (player in msc_prisoners) then {
-					player call ace_sys_interaction_fnc_handcuff;
+					["ace_sys_interaction_swm2", [player, "CivilLying01"]] call CBA_fnc_GlobalEvent;
+					player setVariable ["ace_sys_interaction_cuffed", true, true];
 				};
 			};
 		};

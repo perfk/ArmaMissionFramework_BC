@@ -31,8 +31,8 @@ if (typeName(_flip) == typeName(true)) then {
 building_playerBusy = true;
 building_objectPlaced = nil;
 
-_actions = _actions + [(_unit addAction ["<t color='#0000ff'>Confirm Deployment</t>", "exec.sqf", {building_objectPlaced = true;}, 99999])];
-_actions = _actions + [(_unit addAction ["<t color='#ff0000'>Cancel Deployment</t>", "exec.sqf", {building_objectPlaced = false;}, 99998])];
+_actions = _actions + [(_unit addAction ["<t color='#0000ff'>Confirm Deployment</t>", "shortcuts\exec.sqf", {building_objectPlaced = true;}, 99999])];
+_actions = _actions + [(_unit addAction ["<t color='#ff0000'>Cancel Deployment</t>", "shortcuts\exec.sqf", {building_objectPlaced = false;}, 99998])];
 
 _previewObject = switch (_previewMethod) do {
 	case 0: {_previewClass createVehicleLocal [0, 0, 0]};

@@ -9,7 +9,7 @@ if (_playerCount > 0) then {
 	
 	_z				= _this select 1;
 	_step			= if (_z < 0) then {-1} else {1};
-	_target 		= ['gdtmod_cyclePlayers', [_step]] call CORE_callFunction;
+	_target 		= ['gdtmod_cyclePlayers', [_step]] call CORE_fnc_callFunction;
 	
 	cutText [format['                   %1', (name gdtmod_seagull_target)], 'PLAIN DOWN'];
 	

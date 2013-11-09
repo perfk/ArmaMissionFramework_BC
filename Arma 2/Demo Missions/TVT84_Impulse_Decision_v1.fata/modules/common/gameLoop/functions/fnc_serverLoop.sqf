@@ -30,8 +30,8 @@ if (isServer) then {
 		*	End Conditions Checking (Ordered)
 		****************************************/
 		
-		if (_missionObj select 0) exitWith {
-			_endMission = ['objective', [(_missionObj select 1)]];
+		if (_missionObj select 0) then {
+			_endMission = ['objective', (_missionObj select 1)];
 		};
 		
 		{
@@ -46,14 +46,13 @@ if (isServer) then {
 			if ((_deadCount > (_startCount * (_percLoss / 100))) && (_percLoss <= 100)) exitWith {
 				_infLoss = [_side, _startCount, _deadCount];
 			};
-			
 		} forEach _infVars;
 		
-		if (!(isNil '_infLoss')) exitWith {
-			_endMission = ['infLoss', [_infLoss]];
+		if (!(isNil '_infLoss')) then {
+			_endMission = ['infLoss', _infLoss];
 		};
 		
-		if ((diag_tickTime > _endTime) && (_endTime != _startTime)) exitWith {
+		if ((diag_tickTime > _endTime) && (_endTime != _startTime)) then {
 			_endMission = ['time', [_missionTime]];
 		};
 		

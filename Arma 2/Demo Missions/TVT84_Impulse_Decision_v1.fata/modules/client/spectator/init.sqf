@@ -11,7 +11,6 @@ _functions = [
 	["gdtmod_isValidTarget","modules\client\spectator\functions\fnc_isValidTarget.sqf"],
 	["gdtmod_mouseZ","modules\client\spectator\functions\fnc_mouseZ.sqf"],
 	["gdtmod_nightVision","modules\client\spectator\functions\fnc_nightVision.sqf"],
-	["gdtmod_onPlayerDead","modules\client\spectator\functions\fnc_onPlayerDead.sqf"],
 	["gdtmod_setCamPos","modules\client\spectator\functions\fnc_setCamPos.sqf"],
 	["gdtmod_startSpectator","modules\client\spectator\functions\fnc_startSpectator.sqf"],
 	["gdtmod_switchCamera","modules\client\spectator\functions\fnc_switchCamera.sqf"]
@@ -23,7 +22,7 @@ _functions = [
 /*****************************/
 
 if (!isDedicated && _autoStartSpectator) then {
-	player addEventHandler ["killed", {['gdtmod_startSpectator'] call CORE_fnc_callFunction;}];
+	player addEventHandler ["killed", {['gdtmod_startSpectator', [true]] call CORE_fnc_spawnFunction;}];
 };
 
 /*****************************/

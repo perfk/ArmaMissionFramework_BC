@@ -30,7 +30,6 @@ _startTime = diag_tickTime;
 
 /* Setting Variables */
 CORE_init							= false;
-CORE_serverInit						= false;
 cm_core_storageKeys					= [];
 cm_core_storageKeysLookup			= [];
 cm_core_functionKeys				= [];
@@ -47,10 +46,12 @@ if (isServer) then {
 	/* Server Variables */
 	cm_core_publicStorageKeys		= [];
 	cm_core_publicStorageKeyRequest	= [-1, ObjNull, []]; // [I/O, Machine, RequestedKeys]
+	CORE_serverInit					= false;
 	
 	/* Broadcasting Variables */
 	publicVariable "cm_core_publicStorageKeys";
 	publicVariable "cm_core_publicStorageKeyRequest";
+	publicVariable "CORE_serverInit";
 };
 
 /* Loading Core Internal Functions */
@@ -118,7 +119,7 @@ if (_waitForXEHPostInit) then {
 
 /* Waiting For Server */
 if (!isServer && _waitForServer) then {
-	[[{CORE_serverInit}], 'Server Init', 0, LOG_NOTICE] call CORE_fnc_waitUntil;
+	[[{!(isNil "CORE_serverInit") && {CORE_serverInit}}], 'Server Init', 0, LOG_NOTICE] call CORE_fnc_waitUntil;
 };
 
 /*****************************/

@@ -24,7 +24,7 @@ Unit Name Scheme:	side_pltNum_squadNum_ftNum_class
 */
 
 // _this = [_unit, 'team', 'squadName', 'class', pltNum, squadNum]
-// [this] execVM 'editor\player.sqf';
+// [this] execVM 'shortcuts\player.sqf';
 
 waitUntil {!isNil "CBA_fnc_split" && !isNil "CBA_fnc_capitalize"};
 
@@ -60,4 +60,4 @@ if ((leader (group _unit)) == _unit) then {
 _unit assignTeam _team;
 _unit setVariable ["ST_FTHud_assignedTeam", _team, true];
 
-[_unit, _class] execVM 'editor\gear.sqf';
+[_unit, _class] execVM 'shortcuts\gear.sqf';

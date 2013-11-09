@@ -73,7 +73,7 @@ debriefing				= 0;	// Defines if the debriefing is shown or not at the end of th
 
 enableItemsDropping		= 0;	// Disable dropping items while swimming.
 
-loadScreen				= "resources\images\loadingScreen.jpg";	// You can define a picture to be shown while the mission is loaded.
+loadScreen				= "static\images\loadingScreen.jpg";	// You can define a picture to be shown while the mission is loaded.
 
 onLoadMission			= "";	// Displays a message while the mission is loading.
 onLoadIntro				= "";	// Displays a message while the intro is loading.

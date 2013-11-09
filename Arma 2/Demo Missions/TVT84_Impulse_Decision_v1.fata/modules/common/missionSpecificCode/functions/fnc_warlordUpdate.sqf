@@ -1,4 +1,6 @@
 
+#define GETUNITPOS(unit) (if (!(isNull (unit))) then {getPos (unit)} else {[0,0,0]})
+
 if (player in msc_warlords) then {
 	
 	[] spawn {
@@ -31,13 +33,13 @@ if (player in msc_warlords) then {
 		
 		_markerUpdates = [
 			//	["MarkerName"		, {TrackingPosCode}						, "MarkerType"		, "MarkerColor"	, "MarkerText"		, loopInt	],
-				["blufor_co_pos"	, {getPos (msc_missionCO select 0)}		, "dot"				, "ColorBlue"	, "Blufor CO"		, 60		],
-				["opfor_co_pos"		, {getPos (msc_missionCO select 1)}		, "dot"				, "ColorRed"	, "Opfor CO"		, 60		],
-				["prisoner_1_pos"	, {getPos (msc_prisoners select 0)}		, "dot"				, "ColorGreen"	, "Prisoner 1"		, 120		],
-				["prisoner_2_pos"	, {getPos (msc_prisoners select 1)}		, "dot"				, "ColorGreen"	, "Prisoner 2"		, 120		],
-				["truck_1_pos"		, {getPos blu_supply_1}					, "SupplyVehicle"	, "ColorBlue"	, "Supply Truck 1"	, 90		],
-				["truck_2_pos"		, {getPos blu_supply_2}					, "SupplyVehicle"	, "ColorBlue"	, "Supply Truck 2"	, 90		],
-				["truck_3_pos"		, {getPos blu_supply_3}					, "SupplyVehicle"	, "ColorBlue"	, "Supply Truck 3"	, 90		],
+				["blufor_co_pos"	, {GETUNITPOS(msc_missionCO select 0)}	, "dot"				, "ColorBlue"	, "Blufor CO"		, 60		],
+				["opfor_co_pos"		, {GETUNITPOS(msc_missionCO select 1)}	, "dot"				, "ColorRed"	, "Opfor CO"		, 60		],
+				["prisoner_1_pos"	, {GETUNITPOS(msc_prisoners select 0)}	, "dot"				, "ColorGreen"	, "Prisoner 1"		, 120		],
+				["prisoner_2_pos"	, {GETUNITPOS(msc_prisoners select 1)}	, "dot"				, "ColorGreen"	, "Prisoner 2"		, 120		],
+				["truck_1_pos"		, {GETUNITPOS(blu_supply_1)}			, "SupplyVehicle"	, "ColorBlue"	, "Supply Truck 1"	, 90		],
+				["truck_2_pos"		, {GETUNITPOS(blu_supply_2)}			, "SupplyVehicle"	, "ColorBlue"	, "Supply Truck 2"	, 90		],
+				["truck_3_pos"		, {GETUNITPOS(blu_supply_3)}			, "SupplyVehicle"	, "ColorBlue"	, "Supply Truck 3"	, 90		],
 				["blu_average_pos"	, {[WEST] call wlu_fnc_getAvgPos}		, "b_inf"			, "ColorBlue"	, "Blufor"			, 15		],
 				["op_average_pos"	, {[EAST] call wlu_fnc_getAvgPos}		, "o_inf"			, "ColorRed"	, "Opfor"			, 15		]
 		];

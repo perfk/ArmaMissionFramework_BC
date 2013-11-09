@@ -53,7 +53,7 @@ class Mission
 	class Intel
 	{
 		briefingName="TVT84 Impulse Decision v1";
-		briefingDescription="Minimum 52 Players / 3-Way TVT / 2 Blu : 2 Op : 1 Ind / Fill Civilians / Uses Naught's Mission Framework / By Naught";
+		briefingDescription="Minimum 52 Players / 3-Way TVT / 2 Blu (US Army) : 2 Op (Al-Qaeda) : 1 Ind (Tribal Warlords) / Fill Civilians / Uses Naught's Mission Framework / By Naught";
 		resistanceEast=1;
 		startWeather=0;
 		startFog=0.13154715;
@@ -66,7 +66,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=34;
+		items=33;
 		class Item0
 		{
 			side="LOGIC";
@@ -1758,34 +1758,13 @@ class Mission
 			side="WEST";
 			class Vehicles
 			{
-				items=1;
-				class Item0
-				{
-					position[]={1754.0924,128.70134,5984.7612};
-					azimut=44.501488;
-					special="NONE";
-					id=155;
-					side="WEST";
-					vehicle="SBE_US_Soldier_SL_EP1";
-					leader=1;
-					skill=0.2;
-					text="blu_9_9_0_sl";
-					init="nul = [this] execVM 'shortcuts\player.sqf';";
-				};
-			};
-		};
-		class Item29
-		{
-			side="WEST";
-			class Vehicles
-			{
 				items=9;
 				class Item0
 				{
 					position[]={1791.0731,132.57227,6009.8389};
 					azimut=155;
 					special="NONE";
-					id=156;
+					id=155;
 					side="WEST";
 					vehicle="SBE_US_Soldier_SL_EP1";
 					player="PLAY CDG";
@@ -1801,7 +1780,7 @@ class Mission
 					position[]={1791.7709,132.68069,6011.2217};
 					azimut=155;
 					special="NONE";
-					id=157;
+					id=156;
 					side="WEST";
 					vehicle="SBE_US_Soldier_TL_EP1";
 					player="PLAY CDG";
@@ -1816,7 +1795,7 @@ class Mission
 					position[]={1792.4559,132.78481,6012.6045};
 					azimut=155;
 					special="NONE";
-					id=158;
+					id=157;
 					side="WEST";
 					vehicle="SBE_US_Soldier_EP1";
 					player="PLAY CDG";
@@ -1830,7 +1809,7 @@ class Mission
 					position[]={1793.0377,132.8764,6013.7549};
 					azimut=155;
 					special="NONE";
-					id=159;
+					id=158;
 					side="WEST";
 					vehicle="SBE_US_Soldier_AR_EP1";
 					player="PLAY CDG";
@@ -1844,7 +1823,7 @@ class Mission
 					position[]={1793.6067,132.96413,6014.8936};
 					azimut=155;
 					special="NONE";
-					id=160;
+					id=159;
 					side="WEST";
 					vehicle="SBE_US_Soldier_AAR_EP1";
 					player="PLAY CDG";
@@ -1858,7 +1837,7 @@ class Mission
 					position[]={1789.1323,132.42776,6010.1133};
 					azimut=155;
 					special="NONE";
-					id=161;
+					id=160;
 					side="WEST";
 					vehicle="SBE_US_Soldier_TL_EP1";
 					player="PLAY CDG";
@@ -1873,7 +1852,7 @@ class Mission
 					position[]={1787.3829,132.30222,6010.374};
 					azimut=155;
 					special="NONE";
-					id=162;
+					id=161;
 					side="WEST";
 					vehicle="SBE_US_Soldier_EP1";
 					player="PLAY CDG";
@@ -1887,7 +1866,7 @@ class Mission
 					position[]={1785.8215,132.18443,6010.5908};
 					azimut=155;
 					special="NONE";
-					id=163;
+					id=162;
 					side="WEST";
 					vehicle="SBE_US_Soldier_AR_EP1";
 					player="PLAY CDG";
@@ -1901,7 +1880,7 @@ class Mission
 					position[]={1784.3207,132.07104,6010.8257};
 					azimut=155;
 					special="NONE";
-					id=164;
+					id=163;
 					side="WEST";
 					vehicle="SBE_US_Soldier_AAR_EP1";
 					player="PLAY CDG";
@@ -1912,7 +1891,7 @@ class Mission
 				};
 			};
 		};
-		class Item30
+		class Item29
 		{
 			side="WEST";
 			class Vehicles
@@ -1923,7 +1902,7 @@ class Mission
 					position[]={1764.42,130.01537,5998.2666};
 					azimut=155;
 					special="NONE";
-					id=165;
+					id=164;
 					side="WEST";
 					vehicle="SBE_US_Soldier_SL_EP1";
 					player="PLAY CDG";
@@ -1939,7 +1918,7 @@ class Mission
 					position[]={1765.1178,130.12398,5999.6494};
 					azimut=155;
 					special="NONE";
-					id=166;
+					id=165;
 					side="WEST";
 					vehicle="SBE_US_Soldier_TL_EP1";
 					player="PLAY CDG";
@@ -1954,7 +1933,7 @@ class Mission
 					position[]={1765.8029,130.2285,6001.0322};
 					azimut=155;
 					special="NONE";
-					id=167;
+					id=166;
 					side="WEST";
 					vehicle="SBE_US_Soldier_EP1";
 					player="PLAY CDG";
@@ -1968,7 +1947,7 @@ class Mission
 					position[]={1766.3846,130.31595,6002.1826};
 					azimut=155;
 					special="NONE";
-					id=168;
+					id=167;
 					side="WEST";
 					vehicle="SBE_US_Soldier_AR_EP1";
 					player="PLAY CDG";
@@ -1982,7 +1961,7 @@ class Mission
 					position[]={1766.9536,130.40262,6003.3213};
 					azimut=155;
 					special="NONE";
-					id=169;
+					id=168;
 					side="WEST";
 					vehicle="SBE_US_Soldier_AAR_EP1";
 					player="PLAY CDG";
@@ -1996,7 +1975,7 @@ class Mission
 					position[]={1762.4792,129.87573,5998.541};
 					azimut=155;
 					special="NONE";
-					id=170;
+					id=169;
 					side="WEST";
 					vehicle="SBE_US_Soldier_TL_EP1";
 					player="PLAY CDG";
@@ -2011,7 +1990,7 @@ class Mission
 					position[]={1760.7299,129.74243,5998.8018};
 					azimut=155;
 					special="NONE";
-					id=171;
+					id=170;
 					side="WEST";
 					vehicle="SBE_US_Soldier_EP1";
 					player="PLAY CDG";
@@ -2025,7 +2004,7 @@ class Mission
 					position[]={1759.1685,129.62489,5999.0186};
 					azimut=155;
 					special="NONE";
-					id=172;
+					id=171;
 					side="WEST";
 					vehicle="SBE_US_Soldier_AR_EP1";
 					player="PLAY CDG";
@@ -2039,7 +2018,7 @@ class Mission
 					position[]={1757.6676,129.51454,5999.2534};
 					azimut=155;
 					special="NONE";
-					id=173;
+					id=172;
 					side="WEST";
 					vehicle="SBE_US_Soldier_AAR_EP1";
 					player="PLAY CDG";
@@ -2050,7 +2029,7 @@ class Mission
 				};
 			};
 		};
-		class Item31
+		class Item30
 		{
 			side="WEST";
 			class Vehicles
@@ -2061,7 +2040,7 @@ class Mission
 					position[]={1687.2837,122.69671,5966.9604};
 					azimut=182.87074;
 					special="NONE";
-					id=174;
+					id=173;
 					side="WEST";
 					vehicle="SBE_US_Soldier_SL_EP1";
 					player="PLAY CDG";
@@ -2077,7 +2056,7 @@ class Mission
 					position[]={1688.5481,122.82876,5967.8579};
 					azimut=182.87074;
 					special="NONE";
-					id=175;
+					id=174;
 					side="WEST";
 					vehicle="SBE_US_Soldier_TL_EP1";
 					player="PLAY CDG";
@@ -2092,7 +2071,7 @@ class Mission
 					position[]={1689.7986,122.96053,5968.7588};
 					azimut=182.87074;
 					special="NONE";
-					id=176;
+					id=175;
 					side="WEST";
 					vehicle="SBE_US_Soldier_EP1";
 					player="PLAY CDG";
@@ -2106,7 +2085,7 @@ class Mission
 					position[]={1690.8516,123.07116,5969.5034};
 					azimut=182.87074;
 					special="NONE";
-					id=177;
+					id=176;
 					side="WEST";
 					vehicle="SBE_US_Soldier_AR_EP1";
 					player="PLAY CDG";
@@ -2120,7 +2099,7 @@ class Mission
 					position[]={1691.8861,123.17967,5970.2437};
 					azimut=182.87074;
 					special="NONE";
-					id=178;
+					id=177;
 					side="WEST";
 					vehicle="SBE_US_Soldier_AAR_EP1";
 					player="PLAY CDG";
@@ -2134,7 +2113,7 @@ class Mission
 					position[]={1685.6963,122.6101,5968.1108};
 					azimut=182.87074;
 					special="NONE";
-					id=179;
+					id=178;
 					side="WEST";
 					vehicle="SBE_US_Soldier_TL_EP1";
 					player="PLAY CDG";
@@ -2149,7 +2128,7 @@ class Mission
 					position[]={1684.2725,122.53425,5969.1602};
 					azimut=182.87074;
 					special="NONE";
-					id=180;
+					id=179;
 					side="WEST";
 					vehicle="SBE_US_Soldier_EP1";
 					player="PLAY CDG";
@@ -2163,7 +2142,7 @@ class Mission
 					position[]={1682.9935,122.46515,5970.0825};
 					azimut=182.87074;
 					special="NONE";
-					id=181;
+					id=180;
 					side="WEST";
 					vehicle="SBE_US_Soldier_AR_EP1";
 					player="PLAY CDG";
@@ -2177,7 +2156,7 @@ class Mission
 					position[]={1681.7765,122.4003,5970.9907};
 					azimut=182.87074;
 					special="NONE";
-					id=182;
+					id=181;
 					side="WEST";
 					vehicle="SBE_US_Soldier_AAR_EP1";
 					player="PLAY CDG";
@@ -2188,7 +2167,7 @@ class Mission
 				};
 			};
 		};
-		class Item32
+		class Item31
 		{
 			side="WEST";
 			class Vehicles
@@ -2199,7 +2178,7 @@ class Mission
 					position[]={1702.8174,124.16201,5973.1421};
 					azimut=172.91652;
 					special="NONE";
-					id=183;
+					id=182;
 					side="WEST";
 					vehicle="US_Soldier_Spotter_EP1";
 					player="PLAY CDG";
@@ -2215,7 +2194,7 @@ class Mission
 					position[]={1703.9066,124.2904,5974.2412};
 					azimut=172.91652;
 					special="NONE";
-					id=184;
+					id=183;
 					side="WEST";
 					vehicle="US_Soldier_Sniper_EP1";
 					player="PLAY CDG";
@@ -2227,7 +2206,7 @@ class Mission
 				};
 			};
 		};
-		class Item33
+		class Item32
 		{
 			side="WEST";
 			class Vehicles
@@ -2238,7 +2217,7 @@ class Mission
 					position[]={1728.8527,126.59943,5982.7046};
 					azimut=155;
 					special="NONE";
-					id=185;
+					id=184;
 					side="WEST";
 					vehicle="SBE_US_Soldier_SL_EP1";
 					player="PLAYER COMMANDER";
@@ -2254,7 +2233,7 @@ class Mission
 					position[]={1729.5504,126.70611,5984.0874};
 					azimut=155;
 					special="NONE";
-					id=186;
+					id=185;
 					side="WEST";
 					vehicle="SBE_US_Soldier_TL_EP1";
 					player="PLAY CDG";
@@ -2269,7 +2248,7 @@ class Mission
 					position[]={1730.2355,126.81116,5985.4702};
 					azimut=155;
 					special="NONE";
-					id=187;
+					id=186;
 					side="WEST";
 					vehicle="SBE_US_Soldier_EP1";
 					player="PLAY CDG";
@@ -2283,7 +2262,7 @@ class Mission
 					position[]={1726.9119,126.45245,5982.979};
 					azimut=155;
 					special="NONE";
-					id=188;
+					id=187;
 					side="WEST";
 					vehicle="SBE_US_Soldier_Medic_EP1";
 					player="PLAY CDG";
@@ -2298,7 +2277,7 @@ class Mission
 					position[]={1725.0941,126.31651,5983.1997};
 					azimut=155;
 					special="NONE";
-					id=189;
+					id=188;
 					side="WEST";
 					vehicle="SBE_US_Soldier_Engineer_EP1";
 					player="PLAY CDG";
@@ -2942,7 +2921,7 @@ class Mission
 		{
 			position[]={6677.8203,134.08569,4103.374};
 			name="opfor_start";
-			text=" Mujahideen Outpost";
+			text=" Al-Qaeda Outpost";
 			type="o_hq";
 			colorName="ColorRed";
 		};

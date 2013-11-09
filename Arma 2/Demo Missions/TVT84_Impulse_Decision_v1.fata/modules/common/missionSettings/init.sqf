@@ -27,12 +27,12 @@ if ([CORE_machine, CORE_LMS_player] call CORE_fnc_isMachine) then {
 	if (_playerSafetyWeapon) then {
 		[] spawn {
 			waitUntil {CORE_init};
-			sleep 0.2;	// Wait for mission start
-			player addWeapon "ACE_Safe";
-			sleep 0.1; // Wait for next frame
-			player selectWeapon "ACE_Safe";
-			sleep 0.1;	// Wait for weapon switch
+			sleep 0.1;
 			player playMove "aidlpknlmstpslowwrfldnon_idlesteady02";
+			sleep 1;
+			player addWeapon "ACE_Safe";
+			sleep 1;
+			player selectWeapon "ACE_Safe";
 		};
 	};
 };

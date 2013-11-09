@@ -1,8 +1,7 @@
 /************************************************
 *	Defines Load File
 *
-*		Description: Loads class structures into
-*					 the description.ext
+*		Description: Loads preprocessor code
 ************************************************/
 
 #include "defines\styles.cpp"

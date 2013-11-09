@@ -9,8 +9,7 @@ US Military (BLU) -
 	3. Main Obj: get extraction information, get captive(s)
 	4. Sec Obj: kill Opfor CO to stop tribal wars in the region
 
-
-Guerillas (OP) - 
+Al-Qaeda (OP) - 
 	
 	1. Has US Captive(s) - 2
 	2. CO has information on stealthy (w/ unregulated airspace) extract routes
@@ -18,7 +17,7 @@ Guerillas (OP) -
 	4. Sec Obj: kill Blufor CO to disable enemy operations in the area
 
 
-Warlords (IND) - 
+tribal warlords (IND) - 
 	
 	1. Has information on US and Guerilla Locations
 	2. Gets updated BLU and OP positions every once in a while

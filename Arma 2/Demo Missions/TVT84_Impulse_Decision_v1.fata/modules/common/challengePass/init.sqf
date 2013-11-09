@@ -42,22 +42,38 @@ if (isServer) then {
 	publicVariable "cp_allChallenges";
 };
 
-if (!isDedicated) then {
+if (!isDedicated && hasInterface) then {
 	[] spawn {
 		private ["_group"];
 		if ((side player) == RESISTANCE) then {
 			_group = player getVariable ["build_area", str(side player)];
 		} else {
-			_group = str(side player);
+			if ((side player) == CIVILIAN) then {
+				_group = "WEST";
+			} else {
+				_group = str(side player);
+			};
 		};
 		
 		waitUntil {!isNil "cp_allChallenges"};
 		
+		private ["_text"];
 		{
 			if ((_x select 0) == _group) exitWith {
-				cp_challengePassComb = [(_x select 1), (_x select 2), (_x select 3), (_x select 4)];
+				_text = "<br/>1. Security" +
+				"<br/>" +
+				"<br/>Challenge: " + (_x select 1) +
+				"<br/>Password: " + (_x select 2) +
+				"<br/>" +
+				"<br/>Number Combination Sum: " + str(_x select 4) +
+				"<br/>" +
+				"Running Password: " + (_x select 3);
 			};
 		} forEach cp_allChallenges;
+		
+		waitUntil {CORE_init};
+		
+		player createDiaryRecord ["Diary", ["SECURITY", _text]];
 	};
 };
 

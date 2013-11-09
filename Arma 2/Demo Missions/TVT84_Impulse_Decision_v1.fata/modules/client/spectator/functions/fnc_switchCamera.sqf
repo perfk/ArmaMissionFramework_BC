@@ -6,7 +6,7 @@ if (((_this select 1) == 1) && (['gdtmod_seagull_camera_on'] call CORE_fnc_getVa
 	_cam			= 'gdtmod_seagull_camera' call CORE_fnc_getVariable;
 	
 	if !(['gdtmod_isValidTarget', [_target]] call CORE_fnc_callFunction) then {
-		_target = ['gdtmod_cyclePlayers', [1]] call CORE_callFunction;
+		_target = ['gdtmod_cyclePlayers', [1]] call CORE_fnc_callFunction;
 	};
 	
 	_cam cameraeffect ['Terminate', 'back'];

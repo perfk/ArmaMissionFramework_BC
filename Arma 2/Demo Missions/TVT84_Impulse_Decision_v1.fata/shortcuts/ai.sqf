@@ -23,7 +23,7 @@ Unit Name Scheme:	side_pltNum_squadNum_ftNum_class
 	ie.				blu_1_6_0_sl
 */
 
-// [this] execVM 'editor\ai.sqf';
+// [this] execVM 'shortcuts\ai.sqf';
 
 waitUntil {!isNil "CBA_fnc_split"};
 
@@ -33,7 +33,7 @@ _unitParams	= [(format["%1", _unit]), "_"] call CBA_fnc_split;
 _class		= if ((count _this) > 1) then {_this select 1} else {_unitParams select 4};
 
 if ((leader (group _unit)) == _unit) then {
-	[_unit] execVM 'editor\patrol.sqf';
+	[_unit] execVM 'shortcuts\patrol.sqf';
 };
 
-[_unit, _class] execVM 'editor\gear.sqf';
+[_unit, _class] execVM 'shortcuts\gear.sqf';

@@ -3,8 +3,8 @@
 
 private ["_timeLimit", "_westPercLoss", "_eastPercLoss", "_guerPercLoss", "_civPercLoss", "_endMissionFunc"];
 
-_timeLimit		= PARAMS_TimeLimit;			// Mission Time Limit
-_endTimeOut		= 120;						// End Screen Time Out (in seconds)
+_timeLimit		= PARAMS_TimeLimit * 60;	// Mission Time Limit (in seconds)
+_endTimeOut		= 30;						// End Screen Time Out (in seconds)
 
 /* Use a percent > 100 to never lose due to casualties */
 _westPercLoss	=  80;						// BLU - Percent of initial force LOST to lose game

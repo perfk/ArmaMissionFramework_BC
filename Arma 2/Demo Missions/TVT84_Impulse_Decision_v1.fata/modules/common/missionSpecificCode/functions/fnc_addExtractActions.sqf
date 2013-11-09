@@ -18,10 +18,14 @@ _action = "
 		_extract = msc_extraction select _i;
 		_side = _extract select 0;
 		if ((_side == playerSide) && !(_extract select 1)) then {
-			_extract set [1, true];
-			_extract set [2, (serverTime + msc_timeToEnd)];
-			msc_extraction set [_i, _extract];
-			publicVariable 'msc_extraction';
+			[0, {
+				private ['_extract'];
+				_extract = _this select 0;
+				_extract set [1, true];
+				_extract set [2, (time + msc_timeToEnd)];
+				msc_extraction set [(_this select 1), _extract];
+				publicVariable 'msc_extraction';
+			}, [_extract, _i]] call CBA_fnc_globalExecute;
 			if (!msc_missionEnding) then {
 				msc_missionEnding = true;
 				publicVariable 'msc_missionEnding';

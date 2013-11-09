@@ -27,7 +27,7 @@ _header			= "";
 _description	= "";
 
 {
-	if ((_x select 1) && (serverTime > (_x select 2))) exitWith {
+	if ((_x select 1) && (time > (_x select 2))) exitWith {
 		_endMission		= true;
 		_header			= format["%1 has extracted.", ([(_x select 0)] call CORE_fnc_sideToText)];
 		_description	= _description + "The warlords' primary objective has been completed. ";

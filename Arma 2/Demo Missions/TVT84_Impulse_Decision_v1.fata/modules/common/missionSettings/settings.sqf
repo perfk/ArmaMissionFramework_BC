@@ -26,4 +26,4 @@ enableRadio false;										// Disable BIS radio (gamey)
 _clientRadioVolume					= 0;				// Change BIS radio volume
 _clientDisableGreetingMenu			= true;				// Disable BIS Greeting Menu
 
-_playerSafetyWeapon					= true;				// Safety player weapon on start
+_playerSafetyWeapon					= !(player in msc_prisoners);	// Safety player weapon on start

@@ -24,7 +24,7 @@ cm_core_moduleCategories	= ["client", "common", "server"];
 *	or 'LOG_NONE'
 *
 *****************************/
-CORE_logLevel				= LOG_ALL;			// Logging Level: Dev = LOG_ALL; Prod = LOG_ALL - LOG_INFO;
+CORE_logLevel				= LOG_ALL - LOG_INFO;	// Logging Level: Dev = LOG_ALL; Prod = LOG_ALL - LOG_INFO;
 
 /******************************
 *	Database Settings

@@ -23,11 +23,11 @@ if (!isDedicated) then {
 			_side		= _params select 0;
 			_startCount	= _params select 1;
 			_deadCount	= _params select 2;
-			_lossPerc	= round((_deadCount / _startCount) * 100) / 100;
+			_lossPerc	= round((_deadCount / _startCount) * 100);
 			_sideName	= [_side] call CORE_fnc_sideToText;
 			
 			_endTitle	= format["%1 has Lost", _sideName];
-			_endDesc	= format["%1 has taken too many casualties. They have lost %2% of their starting force.", _sideName, _lossPerc];
+			_endDesc	= format["%1 has taken too many casualties. They have lost %2 percent of their starting force.", _sideName, _lossPerc];
 		};
 		
 		default {

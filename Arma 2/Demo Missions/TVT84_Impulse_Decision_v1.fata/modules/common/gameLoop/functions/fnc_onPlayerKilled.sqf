@@ -17,3 +17,7 @@ if (_lossVar != "") then {
 	_prevValue = [_lossVar] call CORE_fnc_getVariable;
 	[_lossVar, (_prevValue + 1), true] call CORE_fnc_setVariable;
 };
+
+waitUntil {!(isNull player) && (alive player)};
+
+player setVariable ["gameLoop_playerSide", (side player)];

@@ -11,8 +11,8 @@ _loop			= nil;
 _return			= false;
 
 _classType = switch (true) do {
-	case (isClass (configFile >> "cfgMagazines" >> _className)): {0};
-	case (isClass (configFile >> "cfgWeapons" >> _className) || isClass (configFile >> "cfgBackpack" >> _className)): {1};
+	case (isClass (configFile >> "cfgWeapons" >> _className) || isClass (configFile >> "cfgBackpack" >> _className)): {0};
+	case (isClass (configFile >> "cfgMagazines" >> _className)): {1};
 	default {-1};
 };
 

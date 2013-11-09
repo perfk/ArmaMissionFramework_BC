@@ -1,6 +1,6 @@
 
 // Load Config
-#include "config\config.cpp"
+#include "config\config.hpp"
 
 // Load Parameters
 #include "params.hpp"
