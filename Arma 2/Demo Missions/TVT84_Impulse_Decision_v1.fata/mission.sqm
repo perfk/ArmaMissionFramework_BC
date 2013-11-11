@@ -1767,7 +1767,7 @@ class Mission
 					id=155;
 					side="WEST";
 					vehicle="SBE_US_Soldier_SL_EP1";
-					player="PLAY CDG";
+					player="PLAYER COMMANDER";
 					leader=1;
 					rank="SERGEANT";
 					skill=0.2;
@@ -2220,7 +2220,7 @@ class Mission
 					id=184;
 					side="WEST";
 					vehicle="SBE_US_Soldier_SL_EP1";
-					player="PLAYER COMMANDER";
+					player="PLAY CDG";
 					leader=1;
 					rank="LIEUTENANT";
 					skill=0.2;
@@ -2279,7 +2279,7 @@ class Mission
 					special="NONE";
 					id=188;
 					side="WEST";
-					vehicle="SBE_US_Soldier_Engineer_EP1";
+					vehicle="SBE_US_Soldier_EP1";
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.2;

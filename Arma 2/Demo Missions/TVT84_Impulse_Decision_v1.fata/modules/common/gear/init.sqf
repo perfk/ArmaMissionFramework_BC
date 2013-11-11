@@ -1,6 +1,9 @@
-private ["_functions"];
+
+// Load Settings
+#include "settings.sqf"
 
 // Load Functions
+private ["_functions"];
 _functions = [
 	["gear_addGear", "modules\common\gear\functions\fnc_addGear.sqf"],
 	["gear_selectWeapon", "modules\common\gear\functions\fnc_selectWeapon.sqf"],

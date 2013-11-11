@@ -13,7 +13,6 @@ ace_settings_enable_tg_change		= PARAMS_ACETG;		// Allow terrain grid (grass) ch
 _ace_settings_max_vd				= _clientVD;		// Max view distance in ACE settings menu
 
 ace_sys_wounds_noai					= true; 			// Disable wounds for AI for performance
-ace_sys_wounds_no_medical_gear		= true;				// Whether ACE should automatically add medical supplies
 ace_wounds_prevtime					= (5 * 60); 		// ACE Wounds Unconscious Countdown Timer
 ace_sys_wounds_withSpect			= false;			// If player is unconscious, spectator script initializes
 

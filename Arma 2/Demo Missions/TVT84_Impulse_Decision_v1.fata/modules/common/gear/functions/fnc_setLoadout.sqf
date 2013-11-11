@@ -10,7 +10,9 @@ _ifak		= PARAM_OPTIONAL(3, []);
 
 removeAllWeapons _unit;
 removeAllItems _unit;
+removeBackpack _unit;
 {_unit removeMagazine _x} forEach (magazines _unit);
+[_unit, "ALL"] call ACE_fnc_RemoveGear;
 
 {
 	[_unit, (_x select 0), (_x select 1), (_x select 2)] call gear_addGear;

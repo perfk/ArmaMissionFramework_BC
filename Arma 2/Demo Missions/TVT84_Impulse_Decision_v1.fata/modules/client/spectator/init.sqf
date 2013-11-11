@@ -1,9 +1,9 @@
 
-private ["_functions"];
-
+// Load Settings
 #include "settings.sqf"
 
 // Load Functions
+private ["_functions"];
 _functions = [
 	["gdtmod_camConstruct","modules\client\spectator\functions\fnc_camConstruct.sqf"],
 	["gdtmod_cyclePlayers","modules\client\spectator\functions\fnc_cyclePlayers.sqf"],

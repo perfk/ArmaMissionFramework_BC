@@ -1,10 +1,9 @@
 
-private ["_functions"];
-
 // Load Settings
 #include "settings.sqf"
 
 // Load Functions
+private ["_functions"];
 _functions = [
 	["sa_containUnit", 	"modules\common\setupArea\functions\fnc_containUnit.sqf"],
 	["sa_playerInit", 	"modules\common\setupArea\functions\fnc_playerInit.sqf", [], true, CORE_LMS_player],

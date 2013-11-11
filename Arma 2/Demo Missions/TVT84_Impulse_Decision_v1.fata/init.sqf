@@ -1,8 +1,6 @@
 
-private ["_return"];
-
 /* Loading Core */
-_return		= call compile preProcessFileLineNumbers "core\init.sqf";
+[] call compile preProcessFileLineNumbers "core\init.sqf";
 
 /************************************************
 *	NOTE:

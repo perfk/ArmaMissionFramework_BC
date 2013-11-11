@@ -1,3 +1,27 @@
+/******************************
+*	Local Machine State
+*
+*		Notes:
+*
+*			Machine States:
+*				1  - Client
+*				2  - Player
+*				4  - Headless Client
+*				8  - Non-JIP
+*				16 - JIP
+*				32 - Server
+*				64 - Dedicated
+*
+*			Figuring State:
+*				To figure a machine's state, add the number of the machine's
+*				characteristics above. For instance, a dedicated server would
+*				have a machine state of 96, a HC would be 13 or 21 (depending
+*				on when it joined the game, before game start or after), and
+*				a JIP player would be 19.
+*				But base numbers work too with some calculation, so all clients
+*				can also be stated as 1.
+*
+******************************/
 
 private ["_machineState"];
 

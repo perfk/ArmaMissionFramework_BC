@@ -1,5 +1,6 @@
 
 // Load Functions
+private ["_functions"];
 _functions = [
 	["msc_addExtractActions", "modules\common\missionSpecificCode\functions\fnc_addExtractActions.sqf", [], true, CORE_LMS_player, cm_core_priority_last],
 	["msc_addIntelActions", "modules\common\missionSpecificCode\functions\fnc_addIntelActions.sqf", [], true, CORE_LMS_player, cm_core_priority_last],

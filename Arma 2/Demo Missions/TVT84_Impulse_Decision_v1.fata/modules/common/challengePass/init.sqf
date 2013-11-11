@@ -1,9 +1,9 @@
 
+// Load Settings
 #include "settings.sqf"
 
-private ["_functions"];
-
 // Load Functions
+private ["_functions"];
 _functions = [];
 
 /*****************************/
@@ -67,7 +67,7 @@ if (!isDedicated && hasInterface) then {
 				"<br/>" +
 				"<br/>Number Combination Sum: " + str(_x select 4) +
 				"<br/>" +
-				"Running Password: " + (_x select 3);
+				"<br/>Running Password: " + (_x select 3);
 			};
 		} forEach cp_allChallenges;
 		

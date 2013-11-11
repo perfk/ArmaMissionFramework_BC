@@ -129,8 +129,8 @@ if (!isServer && _waitForServer) then {
 /* Jay Arma 2 Library Plugin Initialization */
 if (['jayarma2lib'] call CORE_fnc_checkAddon) then {
 	{
-		if ((_x select 1) in [0]) then {
-			_x call cm_core_fnc_createHashMap;
+		if ((_x select 1) in [0,3]) then {
+			(_x select 0) call cm_core_fnc_createHashMap;
 		};
 	} forEach [
 		[cm_core_functionDB, cm_core_functionDBMethod],
@@ -142,7 +142,7 @@ if (['jayarma2lib'] call CORE_fnc_checkAddon) then {
 	[LOG_NOTICE, 'CORE', "JayArma2Lib not available. HashMaps cannot be used.", [], __FILE__, __LINE__] call CORE_fnc_log;
 };
 
-/* Loading Mission Parameters */
+/* Load Mission Parameters */
 [] call cm_core_fnc_loadParams;
 
 /* Waiting for Player */

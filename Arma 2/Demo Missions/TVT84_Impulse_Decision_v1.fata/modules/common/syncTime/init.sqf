@@ -1,6 +1,4 @@
 
-private ["_functions"];
-
 // Defines
 #define SET_INIT_DATE setDate [_initYear, _initMonth, _initDay, _initHour, _initMinute]
 
@@ -8,6 +6,7 @@ private ["_functions"];
 #include "settings.sqf"
 
 // Load Functions
+private ["_functions"];
 _functions = [];
 
 if (_syncTime) then {_functions = _functions + [["syncTime_timeLoop", "modules\common\syncTime\functions\fnc_timeLoop.sqf", [], true, CORE_LMS_server]]};

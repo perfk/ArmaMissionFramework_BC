@@ -11,13 +11,29 @@ _loop			= nil;
 _return			= false;
 
 _classType = switch (true) do {
-	case (isClass (configFile >> "cfgWeapons" >> _className) || isClass (configFile >> "cfgBackpack" >> _className)): {0};
-	case (isClass (configFile >> "cfgMagazines" >> _className)): {1};
+	case (isClass (configFile >> "cfgMagazines" >> _className)): {0};
+	case (isClass (configFile >> "cfgWeapons" >> _className) || isClass (configFile >> "cfgBackpack" >> _className)): {1};
 	default {-1};
 };
 
 switch (_classType) do {
-	case 0: {					/* Weapon */
+	case 0: {					/* Magazine */
+		switch (_addType) do {
+			case 0: {
+				_code = {(_this select 0) addMagazine (_this select 1)};
+				_loop = true;
+			};
+			case 1: {
+				_code = ACE_fnc_PackMagazine;
+				_loop = false;
+			};
+			case 2: {
+				_code = {(_this select 0) addMagazineCargoGlobal [(_this select 1), (_this select 2)]};
+				_loop = false;
+			};
+		};
+	};
+	case 1: {					/* Weapon */
 		switch (_addType) do {
 			case 0: {
 				_code = {(_this select 0) addWeapon (_this select 1)};
@@ -33,22 +49,6 @@ switch (_classType) do {
 			};
 			case 3: {
 				_code = {(_this select 0) setVariable ["ACE_weapononback", (_this select 1), true]};
-				_loop = false;
-			};
-		};
-	};
-	case 1: {					/* Magazine */
-		switch (_addType) do {
-			case 0: {
-				_code = {(_this select 0) addMagazine (_this select 1)};
-				_loop = true;
-			};
-			case 1: {
-				_code = ACE_fnc_PackMagazine;
-				_loop = false;
-			};
-			case 2: {
-				_code = {(_this select 0) addMagazineCargoGlobal [(_this select 1), (_this select 2)]};
 				_loop = false;
 			};
 		};

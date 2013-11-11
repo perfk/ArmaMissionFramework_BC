@@ -1,10 +1,9 @@
 
-private ["_functions"];
-
 // Load Settings
 #include "settings.sqf"
 
 // Load Functions
+private ["_functions"];
 _functions = [
 	["gameLoop_endMission", 		"modules\common\gameLoop\functions\fnc_endMission.sqf"],
 	["gameLoop_missionObjCheck", 	"modules\common\gameLoop\functions\fnc_missionObjCheck.sqf"],

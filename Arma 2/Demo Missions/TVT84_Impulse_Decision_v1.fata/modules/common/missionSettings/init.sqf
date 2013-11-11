@@ -1,7 +1,9 @@
 
+// Load Settings
 #include "settings.sqf"
 
 // Load Functions
+private ["_functions"];
 _functions = [
 	["settings_safetyWeapon", "modules\common\missionSettings\functions\fnc_safetyWeapon.sqf", [], true, CORE_LMS_player, cm_core_priority_last]
 ];

@@ -1,9 +1,9 @@
 
+// Load Settings
 #include "settings.sqf"
 
-private ["_functions"];
-
 // Load Functions
+private ["_functions"];
 _functions = [
 	["fmh_addFlexiButton","modules\client\flexiMenuHelper\functions\fnc_addFlexiButton.sqf"],
 	["fmh_addFlexiMenu","modules\client\flexiMenuHelper\functions\fnc_addFlexiMenu.sqf"],
