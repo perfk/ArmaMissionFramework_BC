@@ -1,0 +1,4 @@
+
+This is not a well developed module, and is only included to appease the people who want UPSMON.
+
+So please, do not use this module as a reference for any other module, as it's standards are not up-to-par.

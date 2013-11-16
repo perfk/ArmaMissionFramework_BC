@@ -11,7 +11,7 @@ _side	= _this select 2;
 *	Weapon Slots(addType)
 *		Gear Normal(0)	x2
 *		Ruck(1)			xInf
-*		WOB(2)			x1
+*		WOB(3)			x1
 **************************************/
 _weapons = [
 	//	["ClassName"				, AddTypeInt, CountInt	],

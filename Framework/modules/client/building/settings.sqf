@@ -4,7 +4,7 @@ private ["_previewUpdateSpeed", "_previewMethod", "_structures", "_buildMenuCond
 _previewUpdateSpeed		= 30;	// Hertz, update speed of preview structure position. Affects performance. Set to 0 for constant updating.
 _previewMethod			= 0;	// 0 = local, 1 = global. Global previews can use a lot of bandwidth if _previewUpdateSpeed is set too high.
 
-_structures				= [		// Building Structures
+_structures = [		// Building Structures
 	//	["Structure Name"		, "ClassName"						, "PreviewClass"						, timeToDeploy	, distance	, flipBool||turnInt	],
 		["Barbed Wire"			, "Fort_RazorWire"					, "Fort_RazorWirePreview"				, 1				, 4			, false				],
 		["Sandbags (Straight)"	, "Land_fort_bagfence_long"			, "Land_fort_bagfence_longPreview"		, 1				, 3			, false				],
@@ -22,12 +22,13 @@ _structures				= [		// Building Structures
 		["Bunker (Large)"		, "Land_fortified_nest_big_EP1"		, "Land_fortified_nest_big_EP1"			, 20			, 8			, true				]
 ];
 
-_buildMenuCond			= {		// Visible Condition for structure building menu
+_buildMenuCond = {
+	// Example Visible Condition for structure building menu
 	private ["_result"];
 	_result = false;
 	_area = player getVariable ["build_area", nil];
 	if (!isNil "_area") then {
-		_result = (alive player) && ((vehicle player) == player) && !building_playerBusy && ([player, _area] call CBA_fnc_inArea) && (time <= (['building_timeLimit', -1] call CORE_fnc_getVariable));
+		_result = ((alive player) && ((vehicle player) == player) && !building_playerBusy && {[player, _area] call CBA_fnc_inArea} && {time <= (['building_timeLimit', -1] call CORE_fnc_getVariable)});
 	};
 	_result
 };
