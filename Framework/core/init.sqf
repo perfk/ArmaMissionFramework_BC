@@ -14,9 +14,6 @@
 #define LOAD_DRV(driver)	CALL_FILE_EXT(DRIVER_PATH + driver)
 #define LOAD_LIB(lib)		CALL_FILE_EXT(LIBRARY_PATH + lib)
 
-/* Loading Core Settings */
-#include "settings.sqf"
-
 /* Loading Libraries */
 LOAD_LIB("addons");
 LOAD_LIB("arrays");
@@ -28,6 +25,9 @@ LOAD_LIB("time");
 LOAD_DRV("logging");
 LOAD_DRV("database");
 LOAD_DRV("framework");
+
+/* Loading Core Settings */
+#include "settings.sqf"
 
 /* Starting Core Init */
 private ["_startTime"];
