@@ -1,18 +1,19 @@
 
 if (isServer) then {
 	
-	private ["_checkFreq", "_startTime", "_infVars"];
+	private ["_checkFreq", "_startTime", "_initPlayers", "_infVars"];
 	
 	// Wait Until Mission Start
 	sleep 5;
 	
 	_checkFreq		= 30; // seconds
 	_startTime		= diag_tickTime;
+	_initPlayers	= call CBA_fnc_players;
 	_infVars		= [
-		[WEST, (WEST countSide allUnits), 'gameLoop_west_infLoss', 'gameLoop_west_infPercentLoss'],
-		[EAST, (EAST countSide allUnits), 'gameLoop_east_infLoss', 'gameLoop_east_infPercentLoss'],
-		[RESISTANCE, (RESISTANCE countSide allUnits), 'gameLoop_resistance_infLoss', 'gameLoop_resistance_infPercentLoss'],
-		[CIVILIAN, (CIVILIAN countSide allUnits), 'gameLoop_civilian_infLoss', 'gameLoop_civilian_infPercentLoss']
+		[WEST, (WEST countSide _initPlayers), 'gameLoop_west_infLoss', 'gameLoop_west_infPercentLoss'],
+		[EAST, (EAST countSide _initPlayers), 'gameLoop_east_infLoss', 'gameLoop_east_infPercentLoss'],
+		[RESISTANCE, (RESISTANCE countSide _initPlayers), 'gameLoop_resistance_infLoss', 'gameLoop_resistance_infPercentLoss'],
+		[CIVILIAN, (CIVILIAN countSide _initPlayers), 'gameLoop_civilian_infLoss', 'gameLoop_civilian_infPercentLoss']
 	];
 	
 	while {(['gameLoop_enabled'] call CORE_fnc_getVariable)} do {
