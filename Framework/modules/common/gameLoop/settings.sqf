@@ -1,7 +1,8 @@
 
-private ["_timeLimit", "_westPercLoss", "_eastPercLoss", "_guerPercLoss", "_civPercLoss", "_endMissionFunc", "_missionObjCheckFunc"];
+private ["_timeLimit", "_glCheckFreq", "_endTimeOut", "_westPercLoss", "_eastPercLoss", "_guerPercLoss", "_civPercLoss", "_endMissionFunc", "_missionObjCheckFunc"];
 
 _timeLimit		= PARAMS_TimeLimit * 60;	// Mission Time Limit (in seconds)
+_glCheckFreq	= 30;						// Game Loop Check Frequency (in seconds)
 _endTimeOut		= 30;						// End Screen Time Out (in seconds)
 
 /* Use a percent > 100 to never lose due to casualties */

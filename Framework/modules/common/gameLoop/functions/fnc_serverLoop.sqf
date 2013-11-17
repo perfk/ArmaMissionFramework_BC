@@ -1,12 +1,7 @@
 
 if (isServer) then {
-	
-	private ["_checkFreq", "_startTime", "_initPlayers", "_infVars"];
-	
-	// Wait Until Mission Start
-	sleep 5;
-	
-	_checkFreq		= 30; // seconds
+	sleep 5; // Wait Until Mission Start
+	private ["_startTime", "_initPlayers", "_infVars"];
 	_startTime		= diag_tickTime;
 	_initPlayers	= call CBA_fnc_players;
 	_infVars		= [
@@ -17,13 +12,10 @@ if (isServer) then {
 	];
 	
 	while {(['gameLoop_enabled'] call CORE_fnc_getVariable)} do {
-		
 		private ["_endTime", "_missionTime", "_missionObj", "_endMission", "_infLoss"];
-		
 		_endTime = _startTime + (['gameLoop_timeLimit'] call CORE_fnc_getVariable);
 		_missionTime = diag_tickTime - _startTime;
 		_missionObj = ['gameLoop_missionObjCheck'] call CORE_fnc_callFunction;
-		
 		_endMission = nil;
 		_infLoss = nil;
 		
@@ -35,7 +27,7 @@ if (isServer) then {
 			_endMission = ['objective', (_missionObj select 1)];
 		};
 		
-		{
+		{ // forEach
 			private ["_side", "_startCount", "_lossVar", "_percVar", "_deadCount", "_percLoss"];
 			_side = _x select 0;
 			_startCount = _x select 1;
@@ -43,7 +35,6 @@ if (isServer) then {
 			_percVar = _x select 3;
 			_deadCount = [_lossVar] call CORE_fnc_getVariable;
 			_percLoss = [_percVar] call CORE_fnc_getVariable;
-			
 			if ((_deadCount > (_startCount * (_percLoss / 100))) && (_percLoss <= 100)) exitWith {
 				_infLoss = [_side, _startCount, _deadCount];
 			};
@@ -59,11 +50,10 @@ if (isServer) then {
 		
 		/***************************************/
 		
-		if (!(isNil "_endMission")) then {
+		if (!(isNil "_endMission")) exitWith {
 			['gameLoop_endMission', _endMission] call CBA_fnc_globalEvent;
 		};
 		
-		sleep _checkFreq;
+		sleep (['gameLoop_glCheckFreq', 30] call CORE_fnc_getVariable);
 	};
-	
 };

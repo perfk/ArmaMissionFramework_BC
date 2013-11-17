@@ -19,6 +19,7 @@ _functions = [
 ['gameLoop_missionObjCheck', _missionObjCheckFunc] call CORE_fnc_saveFunction;
 
 ['gameLoop_timeLimit', _timeLimit] call CORE_fnc_setVariable;
+['gameLoop_glCheckFreq', _glCheckFreq] call CORE_fnc_setVariable;
 ['gameLoop_endScreenTimeOut', _endTimeOut] call CORE_fnc_setVariable;
 
 ['gameLoop_west_infPercentLoss', _westPercLoss] call CORE_fnc_setVariable;
