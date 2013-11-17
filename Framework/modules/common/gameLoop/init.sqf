@@ -6,7 +6,6 @@
 private ["_functions"];
 _functions = [
 	["gameLoop_endMission", 		"modules\common\gameLoop\functions\fnc_endMission.sqf"],
-	["gameLoop_missionObjCheck", 	"modules\common\gameLoop\functions\fnc_missionObjCheck.sqf"],
 	["gameLoop_onPlayerKilled", 	"modules\common\gameLoop\functions\fnc_onPlayerKilled.sqf"],
 	["gameLoop_playerInit", 		"modules\common\gameLoop\functions\fnc_playerInit.sqf", [], true, CORE_LMS_player],
 	["gameLoop_serverLoop", 		"modules\common\gameLoop\functions\fnc_serverLoop.sqf", [], true, CORE_LMS_server]
@@ -16,6 +15,8 @@ _functions = [
 /* Initialization Code Below */
 /*        NO WAITING!        */
 /*****************************/
+
+['gameLoop_missionObjCheck', _missionObjCheckFunc] call CORE_fnc_saveFunction;
 
 ['gameLoop_timeLimit', _timeLimit] call CORE_fnc_setVariable;
 ['gameLoop_endScreenTimeOut', _endTimeOut] call CORE_fnc_setVariable;
