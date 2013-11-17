@@ -9,6 +9,8 @@ _side	= _this select 2;
 
 /**************************************
 *	Vehicle Weapons
+*		Vehicle(0)			xInf
+*		Cargo(2)			xInf
 **************************************/
 _weapons = [
 	//	["ClassName"				, typeInt	, CountInt	],
@@ -21,6 +23,8 @@ _weapons = [
 
 /**************************************
 *	Vehicle Magazines
+*		Vehicle(0)			xInf
+*		Cargo(2)			xInf
 **************************************/
 _magazines = [
 	//	["ClassName"				, typeInt	, CountInt	],
