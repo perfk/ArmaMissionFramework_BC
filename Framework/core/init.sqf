@@ -12,7 +12,7 @@
 #define CALL_FILE(file)		(call COMPILE_FILE(file))
 #define CALL_FILE_EXT(file)	CALL_FILE(file + ".sqf")
 #define LOAD_DRV(driver)	CALL_FILE_EXT(DRIVER_PATH + driver)
-#define LOAD_LIB(lib)		CALL_FILE_EXT(LIBRARY_PATH + lib)
+#define LOAD_LIB(lib)		CALL_FILE_EXT(LIBRARY_PATH + lib + "\init")
 
 /* Loading Libraries */
 LOAD_LIB("addons");
