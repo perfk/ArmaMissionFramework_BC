@@ -30,13 +30,13 @@ CORE_logLevel				= LOG_ALL - LOG_INFO;	// Logging Level: Dev = LOG_ALL; Prod = L
 *	Database Settings
 *	
 *		Notes:
-*			Database Storage Methods:
-*				0 - JayArma2Lib HashMap
-*				1 - MissionNameSpace		(Global Variable)
-*				2 - UINameSpace				(Peristant)
-*				3 - JayArma2Lib HashMap DB						(SLOW)
-*				4 - MissionNameSpace DB		(Global Variable)	(SLOW)
-*				5 - UINameSpace DB			(Peristant)			(SLOW)
+*			Standard Database Storage Methods (Schemas):
+*				"hashmap"		- JayArma2Lib HashMap
+*				"missionNS"		- MissionNameSpace			(Global Variable)
+*				"uiNS" 			- UINameSpace				(Peristant)
+*				"hashmap_db"	- JayArma2Lib HashMap DB						(SLOW)
+*				"missionNS_db"	- MissionNameSpace DB		(Global Variable)	(SLOW)
+*				"uiNS_db" 		- UINameSpace DB			(Peristant)			(SLOW)
 *
 *		Caution: JayArma2Lib is largely broken at the moment, so I'd
 *				 recommend against using it currently (9/15/2013).
@@ -45,9 +45,9 @@ CORE_logLevel				= LOG_ALL - LOG_INFO;	// Logging Level: Dev = LOG_ALL; Prod = L
 *				
 ******************************/
 cm_core_functionDB			= "cm_functions";	// Name of the Functions Database
-cm_core_functionDBMethod	= 1;				// Method of DB Storage
+cm_core_functionDBMethod	= "missionNS";		// Method of DB Storage
 cm_core_variableDB			= "cm_variables";	// Name of the Variables Database
-cm_core_variableDBMethod	= 1;				// Method of DB Storage
+cm_core_variableDBMethod	= "missionNS";		// Method of DB Storage
 
 /* Local Initialization Settings */
 private [ "_waitForXEHPostInit", "_waitForServer"];

@@ -34,21 +34,22 @@
 *  Static Definitions
 *****************************/
 
-CORE_LMS_all					= [1,32];
-CORE_LMS_client 				= 1;
-CORE_LMS_player 				= 2;
-CORE_LMS_hc						= 4;
-CORE_LMS_nonJIP 				= 8;
-CORE_LMS_JIP 					= 16;
-CORE_LMS_server			 		= 32;
-CORE_LMS_aiHost 				= [4,32];
-cm_core_initFunctions			= [];
-cm_core_initAIFunctions			= [];
-cm_core_priority_immediate		= 0;
-cm_core_priority_high			= 1;
-cm_core_priority_normal			= 10;
-cm_core_priority_low			= 50;
-cm_core_priority_last			= 100;
+CORE_LMS_all				= [1,32];
+CORE_LMS_client 			= 1;
+CORE_LMS_player 			= 2;
+CORE_LMS_hc					= 4;
+CORE_LMS_nonJIP 			= 8;
+CORE_LMS_JIP 				= 16;
+CORE_LMS_server			 	= 32;
+CORE_LMS_aiHost 			= [4,32];
+CORE_priority_immediate		= 0;
+CORE_priority_high			= 1;
+CORE_priority_normal		= 10;
+CORE_priority_low			= 50;
+CORE_priority_last			= 100;
+
+cm_core_initFunctions		= [];
+cm_core_initAIFunctions		= [];
 
 /****************************
 *  API Functions
@@ -77,25 +78,18 @@ CORE_fnc_isMachine = {
 *****************************/
 
 cm_core_fnc_initComponents = {
-	private ["_initFunctions"];
-	_initFunctions	= +cm_core_initFunctions;
 	// Sort by Priority
-	_initFunctions	= [_initFunctions, 5] call CBA_fnc_sortNestedArray;
-	/* Loading All Init Functions */
-	for "_i" from 0 to ((count _initFunctions) - 1) do {
-		private ["_function", "_run"];
-		_function = _initFunctions select _i;
-		_run = if ((count _function) > 4) then {
-			if (typeName(_function select 4) == typeName(true)) then {
-				(_function select 4);
-			} else {
-				[CORE_machine, (_function select 4)] call CORE_fnc_isMachine;
-			};
-		} else {true};
-		if (_run) then {
-			[(_function select 0), (_function select 2)] call CORE_fnc_spawnFunction;
+	[cm_core_initFunctions, 6] call CBA_fnc_sortNestedArray;
+	{ /* Loading All Init Functions */
+		if ([CORE_machine, (_x select 5)] call CORE_fnc_isMachine) then {
+			[(_x select 0), (_x select 4)] call CORE_fnc_spawnFunction;
 		};
-	};
+	} forEach cm_core_initFunctions;
+};
+
+cm_core_fnc_loadManifest = {
+	if ((typeName(_this)) != "ARRAY") then {_this = [_this]};
+	call compile ("[" + (preProcessFile (_this select 0)) + "]");
 };
 
 cm_core_fnc_loadModules = {
@@ -107,7 +101,7 @@ cm_core_fnc_loadModules = {
 		_manifest = _x;
 		_path = "modules\" + _manifest + "\";
 		_maniPath = _path + "manifest.file";
-		_moduleArray = call compile ("[" + (preProcessFile _maniPath) + "]");
+		_moduleArray = [_maniPath] call cm_core_fnc_loadManifest;
 		if (typeName(_moduleArray) != typeName([])) then {
 			[LOG_ERROR, 'CORE_LOADMODULES', "Cannot load modules in the '%1' manifest! Manifest corrupted. Manifest File: '%2'.", [_manifest, _maniPath], __FILE__, __LINE__] call CORE_fnc_log;
 		} else {
@@ -117,27 +111,28 @@ cm_core_fnc_loadModules = {
 					_filePath	= _path + _x + "\init.sqf";
 					_file		= preProcessFileLineNumbers _filePath;
 					if (_file != "") then {
-						/*
-						private ["_handle"];
-						_handle = [] spawn compile _file;
-						*/
 						private ["_return"];
 						_return = call compile _file;
-						if !(isNil "_return") then {
-							if (typeName(_return) == typeName([])) then {
-								{ // Load Returned Functions
-									// _x = ['name', 'path'(, [params], execBool, machineInt, priority)];
-									// Priority (any number): Immediate=0, High=1, Normal=10, Low=50, Last=100
-									[(_x select 0), (_x select 1)] call CORE_fnc_compileFunction;
-									if ((count _x) > 3) then {
-										if (_x select 3) then {
-											if ((count _x) <= 4) then {_x set [4, true]};
-											if ((count _x) <= 5) then {_x set [5, cm_core_priority_normal]};
-											cm_core_initFunctions = cm_core_initFunctions + [_x];
-										};
-									};
-								} forEach _return;
-							};
+						if (!(isNil "_return") && {typeName(_return) == typeName([])}) then {
+							{ // Load Returned Functions
+								// _x = ['name', 'path'(, protected, execBool, [params], machineInt, priority)];
+								// Priority (any number): Immediate=0, High=1, Normal=10, Low=50, Last=100
+								//---
+								// Set Optional Parameter Defaults
+								#define SET_OPT_DEFAULT(idx,dft) if ((count _x) <= idx) then {_x set [idx, dft]}
+								//---
+								SET_OPT_DEFAULT(2,false);
+								SET_OPT_DEFAULT(3,false);
+								SET_OPT_DEFAULT(4,[]);
+								SET_OPT_DEFAULT(5,CORE_LMS_all);
+								SET_OPT_DEFAULT(6,CORE_priority_normal);
+								//---
+								[(_x select 0), (_x select 1), (_x select 2)] call CORE_fnc_compileFunction;
+								//---
+								if (((count _x) > 3) && {_x select 3}) then {
+									cm_core_initFunctions = cm_core_initFunctions + [_x];
+								};
+							} forEach _return;
 						};
 						[LOG_INFO, 'CORE_LOADMODULES', "Loaded the '%1' module from the '%2' manifest. Module File: '%3'.", [_x, _manifest, _filePath], __FILE__, __LINE__] call CORE_fnc_log;
 					};
