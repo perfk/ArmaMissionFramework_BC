@@ -1,4 +1,3 @@
-
 #include "init_hashmap.sqf"
 
 private ["_dbData"];

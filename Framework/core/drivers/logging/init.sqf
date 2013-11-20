@@ -6,6 +6,26 @@
 #define ISNILS(var,value) if (isNil 'var') then {var=value}
 
 /****************************
+*  Preprocessor Definitions
+*****************************/
+
+#define PRINT_COMP %1
+#define PRINT_FRAME %2
+#define PRINT_GTIME %3
+#define PRINT_TTIME %4
+#define PRINT_FILE %5%6
+#define PRINT_MESSAGE %7
+
+#define GVAR_PREFIX "cm_core_logging_templates_"
+#define LEVELS_ARRAY [ \
+	["critical", 1], \
+	["error", 2], \
+	["warning", 4], \
+	["notice", 8], \
+	["info", 16] \
+]
+
+/****************************
 *  Static Definitions
 *****************************/
 
@@ -27,72 +47,41 @@ CORE_fnc_log = {
 	_component	= _this select 1;
 	_text		= _this select 2;
 	_params		= if ((count _this) > 3) then {_this select 3} else {[]};
-	_file		= if ((count _this) > 4) then {_this select 4} else {''};
+	_file		= if ((count _this) > 4) then {_this select 4} else {'No File Specified'};
 	_line		= if ((count _this) > 5) then {':' + str(_this select 5)} else {''};
 	_result		= false;
 	if (CORE_logLevel > 0) then {
 		private ["_proceed"];
 		_proceed = if !(isNil 'CORE_fnc_decHasBin') then {[CORE_logLevel, _level] call CORE_fnc_decHasBin} else {true};
 		if (_proceed) then {
-			private ["_string", "_endString", "_rtime"];
-			_string = "";
-			_endString = "";
-			//_rtime = [(if (isClass(configFile >> "CfgPatches" >> "jayarma2lib_common")) then {([] call jayarma2lib_fnc_getLocalTime) * 3600} else {diag_tickTime}), 'H:MM:SS'] call CBA_fnc_formatElapsedTime;
-			_rtime = [diag_tickTime, 'H:MM:SS'] call CBA_fnc_formatElapsedTime;
-			switch (_level) do {
-				/****************************************/
-				case LOG_CRIT: {	// Game-Breaking Errors
-					_string = _string + '\n' + "=====================================================================" + '\n';
-					_string = _string + format["== %1: CRITICAL - %2", _component, _rtime] + '\n';
-					_string = _string + format["== Frame: %1 | GameTime: %2 | TickTime: %3", diag_frameNo, time, diag_tickTime] + '\n';
-					if (_file != '') then {
-						_string = _string + format["== File: '%1%2'", _file, _line] + '\n';
-					};
-					_string = _string + "== Message: ";
-					_endString = _endString + '\n' + "=====================================================================" + '\n';
+			private ["_template"];
+			_template = nil;
+			{
+				if ((_x select 1) == _level) exitWith {
+					_template = missionNamespace getVariable [(GVAR_PREFIX + (_x select 0)), nil];
 				};
-				/****************************************/
-				case LOG_ERROR: {	// Recoverable Errors
-					_string = _string + '\n' + format["-- %1: ERROR [Frame: %2 | Time: %3 | GameTime: %4 | TickTime: %5]", _component, diag_frameNo, _rtime, time, diag_tickTime] + '\n';
-					if (_file != '') then {
-						_string = _string + format["-- File: '%1%2'", _file, _line] + '\n';
-					};
-					_string = _string + "-- Message: ";
-					_endString = _endString + '\n';
-				};
-				/****************************************/
-				case LOG_WARN: {	// Possible Error or Delay
-					_string = _string + format["%1: Warning [Time: %2 | GameTime: %3 | TickTime: %4", _component, _rtime, time, diag_tickTime];
-					if (_file != '') then {
-						_string = _string + format[" | File: '%1%2'", _file, _line];
-					};
-					_string = _string + "]\n	Message: ";
-					_endString = _endString + "\n	End Warning.";
-				};
-				/****************************************/
-				case LOG_NOTICE: {	// Warning with no possible errors
-					_string = _string + format["%1: Notice [Time: %2 | GameTime: %3 | TickTime: %4", _component, _rtime, time, diag_tickTime];
-					if (_file != '') then {
-						_string = _string + format[" | File: '%1%2'", _file, _line];
-					};
-					_string = _string + "]\n	Message: ";
-					_endString = _endString + "\n	End Notice.";
-				};
-				/****************************************/
-				default {			// Informational
-					_string = _string + format["%1: Info [Time: %2 | GameTime: %3 | TickTime: %4", _component, _rtime, time, diag_tickTime];
-					if (_file != '') then {
-						_string = _string + format[" | File: '%1%2'", _file, _line];
-					};
-					_string = _string + " | Message: '";
-					_endString = _endString + "']";
-				};
-				/****************************************/
+			} forEach LEVELS_ARRAY;
+			if (!isNil "_template") then {
+				diag_log text format [_template,
+					_component,
+					diag_frameno,
+					time,
+					diag_tickTime,
+					_file,
+					_line,
+					_text
+				];
+				_result = true;
 			};
-			_string = _string + format([_text] + _params) + _endString;
-			{diag_log text _x} forEach ([_string, "\n"] call CBA_fnc_split);
-			_result = true;
 		};
 	};
 	_result
 };
+
+/****************************
+*  Finalizing Driver Load
+*****************************/
+
+{ // forEach
+	missionNamespace setVariable [(GVAR_PREFIX + (_x select 0)), (preProcessFile ("core\drivers\logging\templates\log_" + (_x select 0) + ".sqf"))];
+} forEach LEVELS_ARRAY;
