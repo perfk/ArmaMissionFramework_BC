@@ -9,14 +9,7 @@
 *  Preprocessor Definitions
 *****************************/
 
-#define PRINT_COMP %1
-#define PRINT_FRAME %2
-#define PRINT_GTIME %3
-#define PRINT_TTIME %4
-#define PRINT_FILE %5%6
-#define PRINT_MESSAGE %7
-
-#define GVAR_PREFIX "cm_core_logging_templates_"
+#define GVAR_PREFIX "cm_core_logging_template_"
 #define LEVELS_ARRAY [ \
 	["critical", 1], \
 	["error", 2], \
@@ -56,7 +49,7 @@ CORE_fnc_log = {
 		if (_proceed) then {
 			private ["_template"];
 			_template = nil;
-			{
+			{ // forEach
 				if ((_x select 1) == _level) exitWith {
 					_template = missionNamespace getVariable [(GVAR_PREFIX + (_x select 0)), nil];
 				};

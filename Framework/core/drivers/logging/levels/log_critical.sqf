@@ -1,6 +1,6 @@
 =====================================================================
-== PRINT_COMP: CRITICAL
-== Frame: PRINT_FRAME | GameTime: PRINT_GTIME | TickTime: PRINT_TTIME
-== File: 'PRINT_FILE'
-== Message: PRINT_MESSAGE
+== %1: CRITICAL
+== Frame: %2 | GameTime: %3 | TickTime: %4
+== File: '%5%6'
+== Message: %7
 =====================================================================
