@@ -9,7 +9,7 @@ _functions = [
 	["fmh_addFlexiMenu","modules\client\flexiMenuHelper\functions\fnc_addFlexiMenu.sqf"],
 	["fmh_flexiMenuType","modules\client\flexiMenuHelper\functions\fnc_flexiMenuType.sqf"],
 	["fmh_loadFlexiMenu","modules\client\flexiMenuHelper\functions\fnc_loadFlexiMenu.sqf"],
-	["fmh_loadToCBA","modules\client\flexiMenuHelper\functions\fnc_loadToCBA.sqf", [], true, CORE_LMS_player],
+	["fmh_loadToCBA","modules\client\flexiMenuHelper\functions\fnc_loadToCBA.sqf", false, true, [], CORE_LMS_player],
 	["fmh_removeFlexiButton","modules\client\flexiMenuHelper\functions\fnc_removeFlexiButton.sqf"],
 	["fmh_removeFlexiEntry","modules\client\flexiMenuHelper\functions\fnc_removeFlexiEntry.sqf"],
 	["fmh_removeFlexiMenu","modules\client\flexiMenuHelper\functions\fnc_removeFlexiMenu.sqf"]

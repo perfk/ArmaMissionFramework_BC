@@ -5,7 +5,7 @@
 // Load Functions
 private ["_functions"];
 _functions = [
-	["hcHelper_delegateAI", 	"modules\common\hcHelper\functions\fnc_delegateAI.sqf", [], true, CORE_LMS_aiHost, cm_core_priority_immediate],
+	["hcHelper_delegateAI", 	"modules\common\hcHelper\functions\fnc_delegateAI.sqf", false, true, [], CORE_LMS_aiHost, cm_core_priority_immediate],
 	["hcHelper_monitorHC", 		"modules\common\hcHelper\functions\fnc_monitorHC.sqf"]
 ];
 

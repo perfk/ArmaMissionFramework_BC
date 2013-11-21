@@ -6,8 +6,8 @@
 private ["_functions"];
 _functions = [
 	["sa_containUnit", 	"modules\common\setupArea\functions\fnc_containUnit.sqf"],
-	["sa_playerInit", 	"modules\common\setupArea\functions\fnc_playerInit.sqf", [], true, CORE_LMS_player],
-	["sa_serverInit", 	"modules\common\setupArea\functions\fnc_serverInit.sqf", [], true, CORE_LMS_server]
+	["sa_playerInit", 	"modules\common\setupArea\functions\fnc_playerInit.sqf", false, true, [], CORE_LMS_player],
+	["sa_serverInit", 	"modules\common\setupArea\functions\fnc_serverInit.sqf", false, true, [], CORE_LMS_server]
 ];
 
 /*****************************/

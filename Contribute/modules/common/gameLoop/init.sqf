@@ -5,10 +5,10 @@
 // Load Functions
 private ["_functions"];
 _functions = [
-	["gameLoop_endMission", 		"modules\common\gameLoop\functions\fnc_endMission.sqf"],
-	["gameLoop_onPlayerKilled", 	"modules\common\gameLoop\functions\fnc_onPlayerKilled.sqf"],
-	["gameLoop_playerInit", 		"modules\common\gameLoop\functions\fnc_playerInit.sqf", [], true, CORE_LMS_player],
-	["gameLoop_serverLoop", 		"modules\common\gameLoop\functions\fnc_serverLoop.sqf", [], true, CORE_LMS_server]
+	["gameLoop_endMission", 	"modules\common\gameLoop\functions\fnc_endMission.sqf"],
+	["gameLoop_onPlayerKilled", "modules\common\gameLoop\functions\fnc_onPlayerKilled.sqf"],
+	["gameLoop_playerInit", 	"modules\common\gameLoop\functions\fnc_playerInit.sqf", false, true, [], CORE_LMS_player],
+	["gameLoop_serverLoop", 	"modules\common\gameLoop\functions\fnc_serverLoop.sqf", false, true, [], CORE_LMS_server]
 ];
 
 /*****************************/

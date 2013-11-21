@@ -9,7 +9,7 @@
 private ["_functions"];
 _functions = [];
 
-if (_syncTime) then {_functions = _functions + [["syncTime_timeLoop", "modules\common\syncTime\functions\fnc_timeLoop.sqf", [], true, CORE_LMS_server]]};
+if (_syncTime) then {_functions = _functions + [["syncTime_timeLoop", "modules\common\syncTime\functions\fnc_timeLoop.sqf", false, true, [], CORE_LMS_server]]};
 
 /*****************************/
 /* Initialization Code Below */

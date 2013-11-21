@@ -6,7 +6,7 @@
 private ["_functions"];
 _functions = [
 	["building_buildStruct", "modules\client\building\functions\fnc_buildStruct.sqf"],
-	["building_init", "modules\client\building\functions\fnc_init.sqf", [_structures], true, CORE_LMS_player, cm_core_priority_last]
+	["building_init", "modules\client\building\functions\fnc_init.sqf", false, true, [_structures], CORE_LMS_player, cm_core_priority_last]
 ];
 
 /*****************************/

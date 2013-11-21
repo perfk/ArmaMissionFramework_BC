@@ -6,7 +6,7 @@
 private ["_functions"];
 _functions = [
 	["upsmon_addArtillery", "modules\common\UPSMON\functions\fnc_addArtillery.sqf"],
-	["upsmon_serverInit", "modules\common\UPSMON\functions\fnc_serverInit.sqf", [], true, CORE_LMS_server],
+	["upsmon_serverInit", "modules\common\UPSMON\functions\fnc_serverInit.sqf", false, true, [], CORE_LMS_server],
 	["upsmon_spawnGroup", "modules\common\UPSMON\functions\fnc_spawnGroup.sqf"]
 ];
 

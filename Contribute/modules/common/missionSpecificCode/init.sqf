@@ -3,7 +3,6 @@
 	or not re-usable code.
 */
 
-
 // Load Functions
 private ["_functions"];
 _functions = [

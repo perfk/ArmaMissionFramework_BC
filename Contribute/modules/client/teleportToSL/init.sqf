@@ -6,7 +6,7 @@
 private ["_functions"];
 _functions = [
 	["teleportToSL","modules\client\teleportToSL\functions\fnc_teleportToSL.sqf"],
-	["ttSL_addToSelfInteract","modules\client\teleportToSL\functions\fnc_addToSelfInteract.sqf", [], true, CORE_LMS_player]
+	["ttSL_addToSelfInteract","modules\client\teleportToSL\functions\fnc_addToSelfInteract.sqf", false, true, [], CORE_LMS_player]
 ];
 
 /*****************************/
