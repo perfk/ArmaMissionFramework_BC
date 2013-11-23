@@ -1,9 +1,0 @@
-
-// Load Config
-#include "config\config.hpp"
-
-// Load Parameters
-#include "params.hpp"
-
-// Load Resources
-#include "resources.hpp"
