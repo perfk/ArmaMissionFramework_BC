@@ -14,3 +14,12 @@
 *
 ******************************/
 
+'gameLoop',
+'gear',
+//'hcHelper',
+//'missionSpecificCode',
+'missionSettings',
+'radioScrambler',
+//'setupArea',
+'syncTime'
+//'UPSMON'
