@@ -28,10 +28,10 @@ CLASS("DynAI_CachedUnit")
 			_mags	= magazines _unit;
 		} else {
 			_class	= _this select 1;
-			_rank	= DEFAULT_PARAM(3,"PRIVATE");
-			_skill	= DEFAULT_PARAM(4,0.2);
-			_weps	= DEFAULT_PARAM(5,[]);
-			_mags	= DEFAULT_PARAM(6,[]);
+			_rank	= DEFAULT_PARAM(2,"PRIVATE");
+			_skill	= DEFAULT_PARAM(3,0.2);
+			_weps	= DEFAULT_PARAM(4,[]);
+			_mags	= DEFAULT_PARAM(5,[]);
 		};
 		MEMBER("unit",_unit);
 		MEMBER("class",_class);
