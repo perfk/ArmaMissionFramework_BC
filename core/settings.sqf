@@ -25,6 +25,7 @@ cm_core_moduleCategories	= ["client", "common", "server"];
 *
 *****************************/
 CORE_logLevel				= LOG_ALL - LOG_INFO;	// Logging Level: Dev = LOG_ALL; Prod = LOG_ALL - LOG_INFO;
+CORE_logToDiary				= true;					// Whether or not to log all errors to the map-based diary
 
 /******************************
 *	Database Settings

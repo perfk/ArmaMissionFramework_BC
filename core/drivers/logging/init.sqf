@@ -10,6 +10,7 @@
 *****************************/
 
 #define GVAR_PREFIX "cm_core_logging_template_"
+#define DIARY_SUBJ_NAME "Framework"
 #define LEVELS_ARRAY [ \
 	["critical", 1], \
 	["error", 2], \
@@ -55,7 +56,8 @@ CORE_fnc_log = {
 				};
 			} forEach LEVELS_ARRAY;
 			if (!isNil "_template") then {
-				diag_log text format [_template,
+				private ["_text"];
+				_text = text format [_template,
 					_component,
 					diag_frameno,
 					time,
@@ -64,6 +66,13 @@ CORE_fnc_log = {
 					_line,
 					_text
 				];
+				if (!isDedicated && CORE_logToDiary) then {
+					if (player diarySubjectExists DIARY_SUBJ_NAME) then {
+						player createDiarySubject [DIARY_SUBJ_NAME, DIARY_SUBJ_NAME];
+					};
+					player createDiaryRecord [DIARY_SUBJ_NAME, ["Error Log", _text]];
+				};
+				diag_log _text;
 				_result = true;
 			};
 		};

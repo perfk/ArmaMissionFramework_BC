@@ -25,7 +25,7 @@ cm_core_variableKeys		= [];
 if (isServer) then {
 	cm_core_publicStorageKeys = [];
 	publicVariable "cm_core_publicStorageKeys";
-	cm_core_publicStorageKeyRequest = [-1, ObjNull, []]; // [I/O, Machine, RequestedKeys]
+	cm_core_publicStorageKeyRequest = [-1, objNull, []]; // [io, target, data]
 	publicVariable "cm_core_publicStorageKeyRequest";
 };
 
@@ -169,9 +169,9 @@ cm_core_fnc_checkPublicKeys = {
 	} forEach cm_core_publicStorageKeys;
 	_publicKeyCount = count _requestKeys;
 	if (_publicKeyCount > 0) then {
-		waitUntil {!(isNil "cm_core_publicStorageKeyRequest") && !(isNull player)};
+		waitUntil {!(isNil "cm_core_publicStorageKeyRequest") && !{isNull player}};
 		cm_core_publicStorageKeyRequest = [1, player, _requestKeys];
-		publicVariable "cm_core_publicStorageKeyRequest";
+		publicVariableServer "cm_core_publicStorageKeyRequest";
 		[LOG_INFO, 'CORE_PUBLIC_KEYS', "Sent request for public keys to server. Count: %1.", [_publicKeyCount], __FILE__, __LINE__] call CORE_fnc_log;
 	};
 };
@@ -181,7 +181,12 @@ cm_core_fnc_initDatabaseDriver = {
 	["cm_core_publicQuerySet", cm_core_fnc_query] call CBA_fnc_addEventHandler;
 	'cm_core_publicStorageKeyRequest' addPublicVariableEventHandler cm_core_fnc_publicKeyRequestHandler;
 	if (!isDedicated) then {
-		[] spawn cm_core_fnc_checkPublicKeys;
+		private ["_startTime"];
+		_startTime = diag_tickTime;
+		[LOG_NOTICE, 'CORE_PUBLIC_KEYS', "Synchronizing public keys.", [], __FILE__, __LINE__] call CORE_fnc_log;
+		[] call cm_core_fnc_checkPublicKeys;
+		waitUntil {(cm_core_publicStorageKeyRequest select 0) == 0};
+		[LOG_NOTICE, 'CORE_PUBLIC_KEYS', "Synchronization of public keys finished! Delay: %1.", [(diag_tickTime - _startTime)], __FILE__, __LINE__] call CORE_fnc_log;
 	};
 };
 
@@ -250,13 +255,13 @@ cm_core_fnc_opFlatDB = {
 };
 
 cm_core_fnc_publicKeyRequestHandler = {
-	private ["_varName", "_requestParams"];
+	private ["_varName", "_requestParams", "_serverIO", "_target", "_data"];
 	_varName		= _this select 0;
 	_requestParams	= _this select 1;
-	_io				= _requestParams select 0;
+	_serverIO		= _requestParams select 0;
 	_target			= _requestParams select 1;
 	_data			= _requestParams select 2;
-	if ((_io == 1) && isServer) then {
+	if (isServer && {_serverIO == 1} && !{isNull _target}) then {
 		private ["_returnData"];
 		_returnData = [];
 		{
@@ -269,10 +274,10 @@ cm_core_fnc_publicKeyRequestHandler = {
 			};
 		} forEach _data;
 		cm_core_publicStorageKeyRequest = [0, _target, _returnData];
-		publicVariable "cm_core_publicStorageKeyRequest";
+		(owner _target) publicVariableClient "cm_core_publicStorageKeyRequest";
 		[LOG_INFO, 'CORE_PUBLIC_KEYS', "Recieved request for public keys & sent data. Request Count: %1. Sent Count: %2. Target: '%3'.", [(count _data), (count _returnData), (name _target)], __FILE__, __LINE__] call CORE_fnc_log;
 	};
-	if ((_io == 0) && !isDedicated && {_target == player}) then {
+	if (!isDedicated && {_serverIO == 0} && {_target == player}) then {
 		{
 			private ["_storageKey", "_transData", "_method", "_db", "_record", "_broadcast", "_protected"];
 			_storageKey	= _x select 0;
@@ -284,7 +289,7 @@ cm_core_fnc_publicKeyRequestHandler = {
 			_protected	= _storageKey select 4;
 			[1, _method, _db, _record, _transData, _broadcast, _protected, false] call cm_core_fnc_query;
 		} forEach _data;
-		[LOG_INFO, 'CORE_PUBLIC_KEYS', "Recieved public key data from server. Count: %1.", [(count _data)], __FILE__, __LINE__] call CORE_fnc_log;
+		[LOG_NOTICE, 'CORE_PUBLIC_KEYS', "Recieved public key data from server. Count: %1.", [(count _data)], __FILE__, __LINE__] call CORE_fnc_log;
 	};
 };
 
