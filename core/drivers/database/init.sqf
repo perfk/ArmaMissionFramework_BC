@@ -25,7 +25,7 @@ cm_core_variableKeys		= [];
 if (isServer) then {
 	cm_core_publicStorageKeys = [];
 	publicVariable "cm_core_publicStorageKeys";
-	cm_core_publicStorageKeyRequest = [objNull, []]; // [target, data]
+	cm_core_publicStorageKeyRequest = [-1, objNull, []]; // [io, target, data]
 	publicVariable "cm_core_publicStorageKeyRequest";
 };
 
@@ -67,12 +67,14 @@ CORE_fnc_getFunction = {
 
 CORE_fnc_getVariable = {
 	ASSERT_ARRAY;
-	private ["_variableName"];
+	private ["_variableName", "_default"];
 	_variableName = _this select 0;
+	_default = DEFAULT_PARAM(1,nil);
 	[0,
 		cm_core_variableDBMethod,
 		cm_core_variableDB,
-		_variableName
+		_variableName,
+		_default
 	] call cm_core_fnc_query;
 };
 
@@ -106,8 +108,8 @@ CORE_fnc_setVariable = {
 	_success = [1,
 		cm_core_functionDBMethod,
 		cm_core_functionDB,
-		_functionName,
-		_function,
+		_varName,
+		_value,
 		_broadcast,
 		_protected
 	] call cm_core_fnc_query;
@@ -170,22 +172,24 @@ cm_core_fnc_checkPublicKeys = {
 	_publicKeyCount = count _requestKeys;
 	if (_publicKeyCount > 0) then {
 		waitUntil {!(isNil "cm_core_publicStorageKeyRequest") && !{isNull player}};
-		cm_core_publicStorageKeyRequest = [player, _requestKeys];
+		cm_core_publicStorageKeyRequest = [1, player, _requestKeys];
 		publicVariableServer "cm_core_publicStorageKeyRequest";
 		[LOG_INFO, 'CORE_PUBLIC_KEYS', "Sent request for public keys to server. Count: %1.", [_publicKeyCount], __FILE__, __LINE__] call CORE_fnc_log;
 	};
 };
 
 cm_core_fnc_initDatabaseDriver = {
-	call cm_core_fnc_initLoadSchemas;
-	["cm_core_publicQuerySet", cm_core_fnc_query] call CBA_fnc_addEventHandler;
-	'cm_core_publicStorageKeyRequest' addPublicVariableEventHandler cm_core_fnc_publicKeyRequestHandler;
-	if (!isDedicated) then {
-		private ["_startTime"];
-		_startTime = diag_tickTime;
-		[LOG_NOTICE, 'CORE_PUBLIC_KEYS', "Synchronizing public keys.", [], __FILE__, __LINE__] call CORE_fnc_log;
-		[] call cm_core_fnc_checkPublicKeys;
-		[LOG_NOTICE, 'CORE_PUBLIC_KEYS', "Synchronization of public keys finished! Delay: %1.", [(diag_tickTime - _startTime)], __FILE__, __LINE__] call CORE_fnc_log;
+	if (isMultiplayer) then {
+		["cm_core_publicQuerySet", cm_core_fnc_query] call CBA_fnc_addEventHandler;
+		'cm_core_publicStorageKeyRequest' addPublicVariableEventHandler cm_core_fnc_publicKeyRequestHandler;
+		if (!isDedicated) then {
+			private ["_startTime"];
+			_startTime = diag_tickTime;
+			[LOG_NOTICE, 'CORE_PUBLIC_KEYS', "Synchronizing public keys.", [], __FILE__, __LINE__] call CORE_fnc_log;
+			[] call cm_core_fnc_checkPublicKeys;
+			waitUntil {(cm_core_publicStorageKeyRequest select 0) == 0};
+			[LOG_NOTICE, 'CORE_PUBLIC_KEYS', "Synchronization of public keys finished! Delay: %1.", [(diag_tickTime - _startTime)], __FILE__, __LINE__] call CORE_fnc_log;
+		};
 	};
 };
 
@@ -210,7 +214,7 @@ cm_core_fnc_getStorageKey = {
 
 cm_core_fnc_initLoadSchemas = {
 	private ["_schemas"];
-	_schemas = ["core\drivers\database\schemas\manifest.file"] call cm_core_fnc_loadManifest;
+	_schemas = ["core\drivers\database\schemas\manifest.file"] call CORE_fnc_loadManifest;
 	cm_core_db_schemas = [];
 	{ // forEach
 		if (typeName(_x) == "STRING") then {
@@ -219,11 +223,7 @@ cm_core_fnc_initLoadSchemas = {
 			_file = preProcessFileLineNumbers _path;
 			if (_file != "") then {
 				cm_core_db_schemas set [(count cm_core_db_schemas), [_x, (compile _file)]];
-			} else {
-				[LOG_ERROR, 'CORE_DATABASE', "Cannot load the '%1' schema in the schema manifest! Error: No matching schema file. Manifest File: '%2'.", [_x, _path], __FILE__, __LINE__] call CORE_fnc_log;
 			};
-		} else {
-			[LOG_ERROR, 'CORE_DATABASE', "Cannot load a schema in the schema manifest! Error: Not a string. Manifest corrupted.", [], __FILE__, __LINE__] call CORE_fnc_log;
 		};
 	} forEach _schemas;
 };
@@ -254,12 +254,13 @@ cm_core_fnc_opFlatDB = {
 };
 
 cm_core_fnc_publicKeyRequestHandler = {
-	private ["_varName", "_requestParams", "_target", "_data"];
+	private ["_varName", "_requestParams", "_serverIO", "_target", "_data"];
 	_varName		= _this select 0;
 	_requestParams	= _this select 1;
-	_target			= _requestParams select 0;
-	_data			= _requestParams select 1;
-	if (isServer && !{isNull _target}) then {
+	_serverIO		= _requestParams select 0;
+	_target			= _requestParams select 1;
+	_data			= _requestParams select 2;
+	if (isServer && {_serverIO == 1} && !{isNull _target}) then {
 		private ["_returnData"];
 		_returnData = [];
 		{
@@ -271,11 +272,11 @@ cm_core_fnc_publicKeyRequestHandler = {
 				_returnData = _returnData + [[_storageKey, ([0, (_storageKey select 0), (_storageKey select 1), (_storageKey select 2)] call cm_core_fnc_query)]];
 			};
 		} forEach _data;
-		cm_core_publicStorageKeyRequest = [_target, _returnData];
+		cm_core_publicStorageKeyRequest = [0, _target, _returnData];
 		(owner _target) publicVariableClient "cm_core_publicStorageKeyRequest";
 		[LOG_INFO, 'CORE_PUBLIC_KEYS', "Recieved request for public keys & sent data. Request Count: %1. Sent Count: %2. Target: '%3'.", [(count _data), (count _returnData), (name _target)], __FILE__, __LINE__] call CORE_fnc_log;
 	};
-	if (!isDedicated && {_target == player}) then {
+	if (!isDedicated && {_serverIO == 0} && {_target == player}) then {
 		{
 			private ["_storageKey", "_transData", "_method", "_db", "_record", "_broadcast", "_protected"];
 			_storageKey	= _x select 0;
@@ -335,3 +336,9 @@ cm_core_fnc_query = {
 cm_core_fnc_storageKeyName = {
 	str(_this select 0) + METHOD_DB_SEPERATOR + (_this select 1) + DB_RECORD_SEPERATOR + (_this select 2);
 };
+
+/****************************
+*  Finalizing Driver Load
+*****************************/
+
+[] call cm_core_fnc_initLoadSchemas;

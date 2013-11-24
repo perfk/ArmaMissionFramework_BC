@@ -17,3 +17,8 @@ CORE_fnc_isFilePath = {
 	_stringArray = toArray(_this select 0);
 	((_stringArray find 46) >= 0) && ((_stringArray find 34) < 0) && ((_stringArray find 39) < 0) // 46='.', 34=("), 39=(') (ie: 'path\file.sqf')
 };
+
+CORE_fnc_loadManifest = {
+	if ((typeName(_this)) != "ARRAY") then {_this = [_this]};
+	call compile ("[" + (preProcessFile (_this select 0)) + "]");
+};
