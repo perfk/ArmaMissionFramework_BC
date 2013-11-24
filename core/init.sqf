@@ -11,14 +11,14 @@
 #define COMPILE_FILE(file)	(compile preProcessFileLineNumbers (file))
 #define CALL_FILE(file)		(call COMPILE_FILE(file))
 #define CALL_FILE_EXT(file)	CALL_FILE(file + ".sqf")
-#define LOAD_DRV(driver)	CALL_FILE_EXT(DRIVER_PATH + driver)
-#define LOAD_LIB(lib)		CALL_FILE_EXT(LIBRARY_PATH + lib + "\init")
+#define LOAD_DRV(driver)	CALL_FILE_EXT(DRIVER_PATH + driver + "\init")
+#define LOAD_LIB(lib)		CALL_FILE_EXT(LIBRARY_PATH + lib)
 
 /* Loading Libraries */
-LOAD_LIB("addons");
 LOAD_LIB("arrays");
 LOAD_LIB("conversions");
 LOAD_LIB("math");
+LOAD_LIB("storage");
 LOAD_LIB("time");
 
 /* Loading Drivers */
@@ -36,6 +36,7 @@ _startTime = diag_tickTime;
 
 /* Setting Variables */
 CORE_init = false;
+newLineChar = toString([10]); // Required for framework
 if (isServer) then {
 	CORE_serverInit = false;
 	publicVariable "CORE_serverInit";

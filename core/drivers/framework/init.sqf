@@ -87,11 +87,6 @@ cm_core_fnc_initComponents = {
 	} forEach cm_core_initFunctions;
 };
 
-cm_core_fnc_loadManifest = {
-	if ((typeName(_this)) != "ARRAY") then {_this = [_this]};
-	call compile ("[" + (preProcessFile (_this select 0)) + "]");
-};
-
 cm_core_fnc_loadModules = {
 	private ["_modules", "_moduleCategories"];
 	_modules			= [];
@@ -101,7 +96,7 @@ cm_core_fnc_loadModules = {
 		_manifest = _x;
 		_path = "modules\" + _manifest + "\";
 		_maniPath = _path + "manifest.file";
-		_moduleArray = [_maniPath] call cm_core_fnc_loadManifest;
+		_moduleArray = [_maniPath] call CORE_fnc_loadManifest;
 		if (typeName(_moduleArray) != typeName([])) then {
 			[LOG_ERROR, 'CORE_LOADMODULES', "Cannot load modules in the '%1' manifest! Manifest corrupted. Manifest File: '%2'.", [_manifest, _maniPath], __FILE__, __LINE__] call CORE_fnc_log;
 		} else {

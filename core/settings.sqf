@@ -24,20 +24,22 @@ cm_core_moduleCategories	= ["client", "common", "server"];
 *	or 'LOG_NONE'
 *
 *****************************/
-CORE_logLevel				= LOG_ALL - LOG_INFO;	// Logging Level: Dev = LOG_ALL; Prod = LOG_ALL - LOG_INFO;
-CORE_logToDiary				= true;					// Whether or not to log all errors to the map-based diary
+CORE_logLevel				= LOG_ALL;			// Logging Level: Dev = LOG_ALL; Prod = LOG_ALL - LOG_INFO;
+CORE_logToDiary				= true;				// Whether or not to log all errors to the map-based diary
 
 /******************************
 *	Database Settings
 *	
 *		Notes:
 *			Standard Database Storage Methods (Schemas):
-*				"hashmap"		- JayArma2Lib HashMap
+*				"hashmap"		- JayArma2Lib HashMap		(Independent Storage)
 *				"missionNS"		- MissionNameSpace			(Global Variable)
-*				"uiNS" 			- UINameSpace				(Peristant)
-*				"hashmap_db"	- JayArma2Lib HashMap DB						(SLOW)
-*				"missionNS_db"	- MissionNameSpace DB		(Global Variable)	(SLOW)
-*				"uiNS_db" 		- UINameSpace DB			(Peristant)			(SLOW)
+*				"uiNS" 			- UINameSpace				(Instance Peristant)
+*				"profileNS" 	- ProfileNameSpace			(Fully Peristant)
+*				"hashmap_db"	- JayArma2Lib HashMap DB	(Independent Storage)	(SLOW)
+*				"missionNS_db"	- MissionNameSpace DB		(Global Variable)		(SLOW)
+*				"uiNS_db" 		- UINameSpace DB			(Instance Peristant)	(SLOW)
+*				"profileNS_db" 	- ProfileNameSpace DB		(Fully Peristant)		(SLOW)
 *
 *		Caution: JayArma2Lib is largely broken at the moment, so I'd
 *				 recommend against using it currently (9/15/2013).

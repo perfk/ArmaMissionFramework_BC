@@ -36,10 +36,10 @@ ISNILS(LOG_ALL,		31);// All
 *****************************/
 
 CORE_fnc_log = {
-	private ["_level", "_component", "_text", "_params", "_file", "_line", "_result"];
+	private ["_level", "_component", "_message", "_params", "_file", "_line", "_result"];
 	_level		= _this select 0;
 	_component	= _this select 1;
-	_text		= _this select 2;
+	_message	= _this select 2;
 	_params		= if ((count _this) > 3) then {_this select 3} else {[]};
 	_file		= if ((count _this) > 4) then {_this select 4} else {'No File Specified'};
 	_line		= if ((count _this) > 5) then {':' + str(_this select 5)} else {''};
@@ -57,22 +57,24 @@ CORE_fnc_log = {
 			} forEach LEVELS_ARRAY;
 			if (!isNil "_template") then {
 				private ["_text"];
-				_text = text format [_template,
+				_text = format [_template,
 					_component,
 					diag_frameno,
 					time,
 					diag_tickTime,
 					_file,
 					_line,
-					_text
+					(format ([_message] + _params))
 				];
 				if (!isDedicated && CORE_logToDiary) then {
-					if (player diarySubjectExists DIARY_SUBJ_NAME) then {
-						player createDiarySubject [DIARY_SUBJ_NAME, DIARY_SUBJ_NAME];
+					_text spawn {
+						if (!(player diarySubjectExists "framework")) then {
+							player createDiarySubject ["framework", DIARY_SUBJ_NAME];
+						};
+						player createDiaryRecord ["framework", ["Diagnostics Log", ("<font face='Zeppelin33' size='10'>" + ([_this, newLineChar, "<br/>"] call CBA_fnc_replace) + "</font>")]];
 					};
-					player createDiaryRecord [DIARY_SUBJ_NAME, ["Error Log", _text]];
 				};
-				diag_log _text;
+				diag_log text _text;
 				_result = true;
 			};
 		};
@@ -85,5 +87,5 @@ CORE_fnc_log = {
 *****************************/
 
 { // forEach
-	missionNamespace setVariable [(GVAR_PREFIX + (_x select 0)), (preProcessFile ("core\drivers\logging\templates\log_" + (_x select 0) + ".sqf"))];
+	missionNamespace setVariable [(GVAR_PREFIX + (_x select 0)), (loadFile ("core\drivers\logging\templates\log_" + (_x select 0) + ".sqf"))];
 } forEach LEVELS_ARRAY;
