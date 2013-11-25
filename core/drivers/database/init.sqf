@@ -106,8 +106,8 @@ CORE_fnc_setVariable = {
 	_broadcast = DEFAULT_PARAM(2,false);
 	_protected = DEFAULT_PARAM(3,false);
 	_success = [1,
-		cm_core_functionDBMethod,
-		cm_core_functionDB,
+		cm_core_variableDBMethod,
+		cm_core_variableDB,
 		_varName,
 		_value,
 		_broadcast,
@@ -305,7 +305,7 @@ cm_core_fnc_query = {
 	if (_call == 1) then {
 		private ["_storageKey"];
 		_storageKey = [_method, _db, _record] call cm_core_fnc_getStorageKey;
-		if (!isNil "_storageKey" && {_storageKey select 3}) then {
+		if (!(isNil "_storageKey") && {_storageKey select 3}) then {
 			_exit = true;
 		};
 	};
