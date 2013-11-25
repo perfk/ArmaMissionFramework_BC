@@ -1,3 +1,4 @@
+#include "schema_header.sqf"
 #include "init_hashmap.sqf"
 
 switch (_call) do {
