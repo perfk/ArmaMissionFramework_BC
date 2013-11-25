@@ -1,4 +1,3 @@
-#include "schema_header.sqf"
 
 private ["_dbData"];
 _dbData = profileNamespace getVariable [_db, [[],[]]];

@@ -1,4 +1,3 @@
-#include "schema_header.sqf"
 #include "init_hashmap.sqf"
 
 private ["_dbData"];
