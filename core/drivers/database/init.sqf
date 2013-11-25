@@ -298,7 +298,7 @@ cm_core_fnc_query = {
 	_method		= _this select 1;
 	_db			= _this select 2;
 	_record		= _this select 3;
-	_data		= if ((count _this) > 4) then {_this select 4} else {nil};
+	_data		= if (((count _this) > 4) && {!(isNil {_this select 4})}) then {_this select 4} else {nil};
 	_exit		= false;
 	_schema		= nil;
 	_return		= nil;
@@ -317,7 +317,10 @@ cm_core_fnc_query = {
 		} forEach cm_core_db_schemas;
 		if (!isNil "_schema") then {
 			_return = _this call _schema;
-			if ((_call == 1) && _return) then {
+			if ((_call == 0) && {isNil "_return"} && !{isNil "_data"}) then {
+				_return = _data;
+			}:
+			if ((_call == 1) && {_return}) then {
 				private ["_broadcast", "_protected", "_local"];
 				_broadcast	= if ((count _this) > 5) then {_this select 5} else {false};
 				_protected	= if ((count _this) > 6) then {_this select 6} else {false};

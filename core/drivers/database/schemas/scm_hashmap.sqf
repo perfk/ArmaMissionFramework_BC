@@ -2,12 +2,9 @@
 
 switch (_call) do {
 	case 0: { // Read
-		private ["_result"];
-		_result = [_db, _record] call jayarma2lib_fnc_hashmapGetValue;
-		if (isNil "_result") then {
-			_return = _data;
-		} else {
-			_return = call compile _result;
+		_return = [_db, _record] call jayarma2lib_fnc_hashmapGetValue;
+		if (!isNil "_return") then {
+			_return = call compile _return;
 		};
 	};
 	case 1: { // Write
