@@ -1,3 +1,4 @@
+#include "schema_header.sqf"
 
 private ["_dbData"];
 _dbData = uiNamespace getVariable [_db, [[],[]]];

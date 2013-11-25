@@ -1,3 +1,4 @@
+#include "schema_header.sqf"
 
 switch (_call) do {
 	case 0: { // Read
