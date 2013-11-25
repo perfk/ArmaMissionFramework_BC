@@ -319,7 +319,7 @@ cm_core_fnc_query = {
 			_return = _this call _schema;
 			if ((_call == 0) && {isNil "_return"} && {!(isNil "_data")}) then {
 				_return = _data;
-			}:
+			};
 			if ((_call == 1) && {_return}) then {
 				private ["_broadcast", "_protected", "_local"];
 				_broadcast	= if ((count _this) > 5) then {_this select 5} else {false};
