@@ -317,7 +317,7 @@ cm_core_fnc_query = {
 		} forEach cm_core_db_schemas;
 		if (!isNil "_schema") then {
 			_return = _this call _schema;
-			if ((_call == 0) && {isNil "_return"} && !{isNil "_data"}) then {
+			if ((_call == 0) && {isNil "_return"} && {!(isNil "_data")}) then {
 				_return = _data;
 			}:
 			if ((_call == 1) && {_return}) then {
