@@ -11,7 +11,7 @@ if (_playerCount > 0) then {
 	
 	private ["_loopCount", "_selectedPlayer"];
 	_loopCount = 0;
-	_selectedPlayer	= _players select 0;
+	_selectedPlayer	= _players select _selection;
 	
 	while {!(['gdtmod_isValidTarget', [_selectedPlayer]] call CORE_fnc_callFunction) && (_loopCount < _playerCount)} do {
 		private ["_selection"];
