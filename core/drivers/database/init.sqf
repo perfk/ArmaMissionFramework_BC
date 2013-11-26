@@ -171,7 +171,7 @@ cm_core_fnc_checkPublicKeys = {
 	} forEach cm_core_publicStorageKeys;
 	_publicKeyCount = count _requestKeys;
 	if (_publicKeyCount > 0) then {
-		waitUntil {!(isNil "cm_core_publicStorageKeyRequest") && !{isNull player}};
+		waitUntil {!(isNil "cm_core_publicStorageKeyRequest") && {!(isNull player)}};
 		cm_core_publicStorageKeyRequest = [1, player, _requestKeys];
 		publicVariableServer "cm_core_publicStorageKeyRequest";
 		[LOG_INFO, 'CORE_PUBLIC_KEYS', "Sent request for public keys to server. Count: %1.", [_publicKeyCount], __FILE__, __LINE__] call CORE_fnc_log;
@@ -260,7 +260,7 @@ cm_core_fnc_publicKeyRequestHandler = {
 	_serverIO		= _requestParams select 0;
 	_target			= _requestParams select 1;
 	_data			= _requestParams select 2;
-	if (isServer && {_serverIO == 1} && !{isNull _target}) then {
+	if (isServer && {_serverIO == 1} && {!(isNull _target)}) then {
 		private ["_returnData"];
 		_returnData = [];
 		{
