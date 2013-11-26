@@ -1,13 +1,12 @@
 
+#define PARAM_OPTIONAL(index,dft) if ((count _this) > index) then {_this select index} else {dft}
+
 private ["_veh", "_weapons", "_magazines"];
+_veh		= _this select 0;
+_weapons	= PARAM_OPTIONAL(1,[]);
+_magazines	= PARAM_OPTIONAL(2,[]);
 
-_veh			= _this select 0;
-_weapons		= _this select 1;
-_magazines		= _this select 2;
+clearMagazineCargoGlobal _veh;
+clearWeaponCargoGlobal _veh;
 
-clearMagazineCargo _veh;
-clearWeaponCargo _veh;
-
-{
-	[_veh, (_x select 0), (_x select 1), (_x select 2)] call gear_addGear;
-} forEach (_magazines + _weapons);
+["gear_addLoadout", [_veh, _weapons, _magazines]] call CORE_fnc_callFunction;

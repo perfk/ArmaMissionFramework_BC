@@ -6,6 +6,7 @@
 private ["_functions"];
 _functions = [
 	["gear_addGear", "modules\common\gear\functions\fnc_addGear.sqf"],
+	["gear_addLoadout", "modules\common\gear\functions\fnc_addLoadout.sqf"],
 	["gear_selectWeapon", "modules\common\gear\functions\fnc_selectWeapon.sqf"],
 	["gear_setLoadout", "modules\common\gear\functions\fnc_setLoadout.sqf"],
 	["gear_setVehLoadout", "modules\common\gear\functions\fnc_setVehLoadout.sqf"]
