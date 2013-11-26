@@ -19,7 +19,7 @@ _handle = [] spawn {
 			_delay		= _sa select 1;
 			_enabled	= _sa select 2;
 			
-			if (((_startTime + _delay) < time) && _enabled) then {
+			if (_enabled && {(_startTime + _delay) < time}) then {
 				_enabled = false;
 				_sa set [2, _enabled];
 				sa_setupAreas set [_i, _sa];
