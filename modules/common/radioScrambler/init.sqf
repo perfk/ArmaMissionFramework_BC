@@ -5,8 +5,9 @@
 // Load Functions
 private ["_functions"];
 _functions = [
-	["rs_channelGen", 			"modules\common\radioScrambler\functions\fnc_channelGen.sqf"],
-	["rs_scramblePlayerRadios", "modules\common\radioScrambler\functions\fnc_scramblePlayerRadios.sqf", false, true, [_timeOut], CORE_LMS_player]
+	["rs_channelGen", "modules\common\radioScrambler\functions\fnc_channelGen.sqf"],
+	["rs_scramblePlayerRadios", "modules\common\radioScrambler\functions\fnc_scramblePlayerRadios.sqf", false, true, [_timeOut], CORE_LMS_player],
+	["rs_setDefaultRadioChannels", "modules\common\radioScrambler\functions\fnc_setDefaultRadioChannels.sqf"]
 ];
 
 /*****************************/
