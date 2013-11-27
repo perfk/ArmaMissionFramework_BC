@@ -13,7 +13,7 @@ removeBackpack _unit;
 {_unit removeMagazine _x} forEach (magazines _unit);
 [_unit, "ALL"] call ACE_fnc_RemoveGear;
 
-["gear_addLoadout", [_unit, _weapons, _magazines]] call CORE_fnc_callFunction;
+[_unit, _weapons, _magazines] call gear_addLoadout;
 
 if ((count _ifak) > 0) then {
 	([_unit] + _ifak) call ACE_fnc_PackIFAK;

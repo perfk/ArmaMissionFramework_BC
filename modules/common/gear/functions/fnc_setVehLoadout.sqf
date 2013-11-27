@@ -9,4 +9,4 @@ _magazines	= PARAM_OPTIONAL(2,[]);
 clearMagazineCargoGlobal _veh;
 clearWeaponCargoGlobal _veh;
 
-["gear_addLoadout", [_veh, _weapons, _magazines]] call CORE_fnc_callFunction;
+[_veh, _weapons, _magazines] call gear_addLoadout;
