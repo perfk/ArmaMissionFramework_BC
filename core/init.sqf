@@ -4,7 +4,7 @@
 /*****************************/
 
 /* Starting Loading Screen */
-startLoadingScreen ["Receiving..."];
+startLoadingScreen ["Loading..."];
 
 /* Core Static Definitions */
 #define DRIVER_PATH			"core\drivers\"
