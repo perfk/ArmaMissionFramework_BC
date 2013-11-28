@@ -31,22 +31,22 @@ if !(isNil "_radioSeeds") then {
 	_channelCount	= 100;
 	_channels		= ["rs_channelGen", [_channelCount, _base, _seed, _freqStep, _seedStep]] call CORE_fnc_callFunction;
 	
-	["rs_setDefaultChannels", ["ACRE_PRC148", _channels]] call CORE_fnc_callFunction;
-	["rs_setDefaultChannels", ["ACRE_PRC148_UHF", _channels]] call CORE_fnc_callFunction;
-	["rs_setDefaultChannels", ["ACRE_PRC152", _channels]] call CORE_fnc_callFunction;
-	["rs_setDefaultChannels", ["ACRE_PRC117F", _channels]] call CORE_fnc_callFunction;
+	["rs_setChannels", ["ACRE_PRC148", _channels]] call CORE_fnc_callFunction;
+	["rs_setChannels", ["ACRE_PRC148_UHF", _channels]] call CORE_fnc_callFunction;
+	["rs_setChannels", ["ACRE_PRC152", _channels]] call CORE_fnc_callFunction;
+	["rs_setChannels", ["ACRE_PRC117F", _channels]] call CORE_fnc_callFunction;
 	
 	// PRC119 Work-Around
 	_channels resize 6;
 	
-	["rs_setDefaultChannels", ["ACRE_PRC119", _channels]] call CORE_fnc_callFunction;
+	["rs_setChannels", ["ACRE_PRC119", _channels]] call CORE_fnc_callFunction;
 	
 	// Long Range Radios
 	_base			= 2400;
 	_channelCount	= 16;
 	_channels		= ["rs_channelGen", [_channelCount, _base, _seed, _freqStep, _seedStep]] call CORE_fnc_callFunction;
 	
-	["rs_setDefaultChannels", ["ACRE_PRC343", _channels]] call CORE_fnc_callFunction;
+	["rs_setChannels", ["ACRE_PRC343", _channels]] call CORE_fnc_callFunction;
 	
 } else {
 	[LOG_WARN, 'RADIO_SCRAMBLER', "Radio scrambler timed-out while waiting for radio seeds (global variable).", [], __FILE__, __LINE__] call CORE_fnc_log;
