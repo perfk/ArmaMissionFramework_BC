@@ -3,6 +3,9 @@
 /*  Core Pre-Initialization  */
 /*****************************/
 
+/* Starting Loading Screen */
+startLoadingScreen ["Receiving..."];
+
 /* Core Static Definitions */
 #define DRIVER_PATH			"core\drivers\"
 #define LIBRARY_PATH		"core\libraries\"
@@ -97,5 +100,8 @@ if (isServer) then {
 	cm_core_functionDBMethod,
 	cm_core_variableDBMethod
 ], __FILE__, __LINE__] call CORE_fnc_log;
+
+/* Ending Loading Screen */
+endLoadingScreen;
 
 true
