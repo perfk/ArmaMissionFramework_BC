@@ -3,8 +3,8 @@
 *  Preprocessor Macros
 *****************************/
 
-#define ASSERT_ARRAY if (typeName(_this) != "ARRAY") then {_this = [_this]}
-#define DEFAULT_PARAM(idx,dft) if ((count _this) > idx) then {_this select idx} else {dft}
+#define ASSERT_ARRAY (if (typeName(_this) != "ARRAY") then {_this = [_this]})
+#define DEFAULT_PARAM(idx,dft) (if (((count _this) > idx) && {!(isNil {_this select idx})}) then {_this select idx} else {dft})
 
 /****************************
 *  Preprocessor Definitions
@@ -67,14 +67,11 @@ CORE_fnc_getFunction = {
 
 CORE_fnc_getVariable = {
 	ASSERT_ARRAY;
-	private ["_variableName", "_default"];
-	_variableName = _this select 0;
-	_default = DEFAULT_PARAM(1,nil);
 	[0,
 		cm_core_variableDBMethod,
 		cm_core_variableDB,
-		_variableName,
-		_default
+		(_this select 0),
+		DEFAULT_PARAM(1,nil)
 	] call cm_core_fnc_query;
 };
 
@@ -298,7 +295,7 @@ cm_core_fnc_query = {
 	_method		= _this select 1;
 	_db			= _this select 2;
 	_record		= _this select 3;
-	_data		= if (((count _this) > 4) && {!(isNil {_this select 4})}) then {_this select 4} else {nil};
+	_data		= DEFAULT_PARAM(4,nil);
 	_exit		= false;
 	_schema		= nil;
 	_return		= nil;
