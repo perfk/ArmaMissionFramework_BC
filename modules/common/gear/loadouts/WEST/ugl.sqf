@@ -1,4 +1,3 @@
-
 private ["_unit", "_class", "_side", "_weapons", "_optics", "_items", "_mainMagazines", "_secondaryMagazines", "_ifak", "_result"];
 
 _unit	= _this select 0;
@@ -15,8 +14,9 @@ _side	= _this select 2;
 **************************************/
 _weapons = [
 	//	["ClassName"				, AddTypeInt, CountInt	],
-		["SCAR_L_CQC_EGLM_Holo"		, 0			, 1			],
-		["ACE_CharliePack_Multicam"	, 3			, 1			]
+		["BAF_L85A2_UGL_SUSAT"		, 0			, 1			],
+		["BAF_NLAW_Launcher"		, 3			, 1			],
+		["ACE_CharliePack_Multicam" , 1			, 1			]
 ];
 
 /**************************************
@@ -26,8 +26,7 @@ _weapons = [
 **************************************/
 _optics = [
 	//	["ClassName"				, AddTypeInt, CountInt	],
-		["NVGoggles"				, 0			, 1			],
-		["Binocular"				, 0			, 1			]
+		["NVGoggles"				, 0			, 1			]
 ];
 
 /**************************************
@@ -55,12 +54,15 @@ _items = [
 **************************************/
 _mainMagazines = [
 	//	["ClassName"				, AddTypeInt, CountInt	],
-		["30Rnd_556x45_Stanag"		, 0			, 7			],
-		["ACE_30Rnd_556x45_T_Stanag", 0			, 1			],
+        ["200Rnd_556x45_L110A1"	    , 1			, 1			],
+        ["100Rnd_556x45_M249"	    , 1			, 1			],    
+		["30Rnd_556x45_Stanag"		, 0			, 6			],
 		["HandGrenade_West"			, 0			, 2			],
 		["SmokeShell"				, 0			, 2			],
-		["30Rnd_556x45_Stanag"		, 1			, 2			],
-		["ACE_30Rnd_556x45_T_Stanag", 1			, 1			]
+		["30Rnd_556x45_Stanag"		, 1			, 6			],
+		["HandGrenade_West"			, 1			, 2			],
+		["SmokeShellGreen"			, 1			, 2			],
+		["SmokeShellBlue"			, 1			, 2			]
 ];
 
 /**************************************
@@ -70,12 +72,15 @@ _mainMagazines = [
 **************************************/
 _secondaryMagazines = [
 	//	["ClassName"				, AddTypeInt, CountInt	],
-		["ACE_1Rnd_HE_M203"			, 0			, 8			],
-		["ACE_1Rnd_HE_M203"			, 1			, 32		],
-		["1Rnd_Smoke_M203"			, 1			, 4			],
-		["1Rnd_SmokeGreen_M203"		, 1			, 4			],
-		["1Rnd_SmokeRed_M203"		, 1			, 4			],
-		["1Rnd_SmokeYellow_M203"	, 1			, 4			],
+		["1Rnd_HE_M203" 			, 0			, 4			],
+		["1Rnd_HE_M203" 			, 1			, 8			],
+		["1Rnd_Smoke_M203" 			, 1			, 2			],
+		["1Rnd_SmokeRed_M203"		, 1			, 2			],
+		["ACE_Knicklicht_B"			, 1			, 4			],
+		["ACE_Knicklicht_G"			, 1			, 4			],
+		["ACE_Knicklicht_R"			, 1			, 4			],
+		["ACE_Knicklicht_Y"			, 1			, 4			],
+		["ACE_Knicklicht_IR"		, 1			, 4			],
 		["ACE_Bandage"				, 1			, 2			],
 		["ACE_LargeBandage"			, 1			, 1			],
 		["ACE_Morphine"				, 1			, 1			],
@@ -89,7 +94,7 @@ _ifak = [
 	1,			// Slot 1
 	1,			// Slot 2
 	1,			// Slot 3
-	true		// Set(true) or Add(false)
+	false		// Set(true) or Add(false)
 ];
 
 //------------------------------------------------------------

@@ -32,7 +32,7 @@ class Header
 {
 	gameType				= Team;	// GameType, see above
 	minPlayers				= 1;	// Min number of players to start
-	maxPlayers				= 10;	// Max number of players allowed
+	maxPlayers				= 24;	// Max number of players allowed
 	playerCountMultipleOf	= 1;	// Should always be 1
 };
 
@@ -71,14 +71,14 @@ aiKills					= 0;	// Enables scorelist for AI players.
 briefing				= 0;	// Skip briefing screen for SP missions.
 debriefing				= 0;	// Defines if the debriefing is shown or not at the end of the mission.
 
-enableItemsDropping		= 0;	// Disable dropping items while swimming.
+enableItemsDropping		= 1;	// Disable dropping items while swimming.
 
-loadScreen				= "";	// You can define a picture to be shown while the mission is loaded.
+loadScreen				= "static\images\loadingScreen1.jpg";	// You can define a picture to be shown while the mission is loaded.
 
 onLoadMission			= "";	// Displays a message while the mission is loading.
 onLoadIntro				= "";	// Displays a message while the intro is loading.
-onLoadMissionTime		= 0;	// Define whether you will see the time and date displayed while the mission loads.
-onLoadIntroTime			= 0;	// Define whether you will see the time and date displayed while the intro loads.
+onLoadMissionTime		= 1;	// Define whether you will see the time and date displayed while the mission loads.
+onLoadIntroTime			= 1;	// Define whether you will see the time and date displayed while the intro loads.
 
 /************************************************
 *	Disable global, side, command and system chat

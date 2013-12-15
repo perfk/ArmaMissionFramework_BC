@@ -1,4 +1,3 @@
-
 private ["_unit", "_class", "_side", "_weapons", "_optics", "_items", "_mainMagazines", "_secondaryMagazines", "_ifak", "_result"];
 
 _unit	= _this select 0;
@@ -15,8 +14,9 @@ _side	= _this select 2;
 **************************************/
 _weapons = [
 	//	["ClassName"				, AddTypeInt, CountInt	],
-		["ACE_M4A1_ACOG_PVS14_F"	, 0			, 1			],
-		["ACE_CharliePack_Multicam"	, 3			, 1			]
+		["BAF_L86A2_ACOG"	    	, 0			, 1			],
+		["BAF_NLAW_Launcher"		, 3			, 1			],
+		["ACE_CharliePack_Multicam" , 1			, 1			]
 ];
 
 /**************************************
@@ -38,18 +38,13 @@ _optics = [
 _items = [
 	//	["ClassName"				, AddTypeInt, CountInt	],
 		["ItemMap"					, 0			, 1			],
-		["ItemGPS"					, 0			, 1			],
 		["ItemWatch"				, 0			, 1			],
 		["ItemCompass"				, 0			, 1			],
-		["ACE_DAGR"					, 0			, 1			],
-		["ACE_Kestrel4500"			, 0			, 1			],
 		["ACE_Earplugs"				, 0			, 1			],
 		["ACE_GlassesLHD_glasses"	, 0			, 1			],
 		["ACRE_PRC343"				, 0			, 1			],
-		["ACRE_PRC148"				, 0			, 1			],
 		["ACE_Map_Tools"			, 1			, 1			],
 		["ACE_KeyCuffs"				, 1			, 1			],
-		["ACE_SpottingScope"		, 1			, 1			],
 		["ACE_GlassesGasMask_US"	, 1			, 1			]
 ];
 
@@ -60,18 +55,15 @@ _items = [
 **************************************/
 _mainMagazines = [
 	//	["ClassName"				, AddTypeInt, CountInt	],
-		["30Rnd_556x45_Stanag"		, 0			, 7			],
-		["ACE_30Rnd_556x45_T_Stanag", 0			, 1			],
+        ["200Rnd_556x45_L110A1"	    , 1			, 1			],
+        ["100Rnd_556x45_M249"	    , 1			, 1			],    
+		["30Rnd_556x45_Stanag"		, 0			, 6			],
+		["30Rnd_556x45_Stanag"		, 1			, 7			],
+        ["ACE_30Rnd_556x45_T_Stanag", 0			, 2			],
 		["HandGrenade_West"			, 0			, 2			],
 		["SmokeShell"				, 0			, 2			],
-		["30Rnd_556x45_Stanag"		, 1			, 4			],
-		["ACE_5Rnd_127x99_B_TAC50"	, 1			, 4			],
-		["ACE_5Rnd_127x99_T_TAC50"	, 1			, 4			],
-		["ACE_Battery_Rangefinder"	, 1			, 4			],
 		["HandGrenade_West"			, 1			, 2			],
 		["SmokeShellGreen"			, 1			, 2			],
-		["SmokeShellRed"			, 1			, 2			],
-		["SmokeShellPurple"			, 1			, 2			],
 		["SmokeShellBlue"			, 1			, 2			]
 ];
 
@@ -87,10 +79,10 @@ _secondaryMagazines = [
 		["ACE_Knicklicht_R"			, 1			, 4			],
 		["ACE_Knicklicht_Y"			, 1			, 4			],
 		["ACE_Knicklicht_IR"		, 1			, 4			],
-		["ACE_Bandage"				, 1			, 2			],
-		["ACE_LargeBandage"			, 1			, 1			],
-		["ACE_Morphine"				, 1			, 1			],
-		["ACE_Epinephrine"			, 1			, 1			]
+		["ACE_Bandage"				, 0			, 2			],
+		["ACE_LargeBandage"			, 0			, 1			],
+		["ACE_Morphine"				, 0			, 1			],
+		["ACE_Epinephrine"			, 0			, 1			]
 ];
 
 /**************************************
@@ -100,7 +92,7 @@ _ifak = [
 	1,			// Slot 1
 	1,			// Slot 2
 	1,			// Slot 3
-	true		// Set(true) or Add(false)
+	false		// Set(true) or Add(false)
 ];
 
 //------------------------------------------------------------

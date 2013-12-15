@@ -1,0 +1,982 @@
+version=11;
+class Mission
+{
+	addOns[]=
+	{
+		"cawheeled_d_baf",
+		"fata",
+		"CACharacters_BAF",
+		"CAAir_BAF",
+		"caair_baf_ch_47f",
+		"ace_sys_vehicledamage",
+		"ace_sys_repair",
+		"ace_sys_wounds",
+		"ace_sys_playerhud",
+		"ace_sys_tracking",
+		"ca_modules_e_weather",
+		"ca_modules_functions",
+		"camisc3",
+		"ace_c_weapon"
+	};
+	addOnsAuto[]=
+	{
+		"ace_sys_vehicledamage",
+		"ace_sys_repair",
+		"ace_sys_wounds",
+		"ace_sys_playerhud",
+		"ace_sys_tracking",
+		"ca_modules_e_weather",
+		"ca_modules_functions",
+		"CACharacters_BAF",
+		"CAWheeled_D_BAF",
+		"CAAir_BAF",
+		"caair_baf_ch_47f",
+		"camisc3",
+		"ace_c_weapon",
+		"fata"
+	};
+	randomSeed=6780239;
+	class Intel
+	{
+		startWeather=0;
+		forecastWeather=0;
+		year=2012;
+		month=3;
+		day=12;
+		hour=12;
+		minute=0;
+	};
+	class Groups
+	{
+		items=11;
+		class Item0
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={319.92801,10.14992,10142.833};
+					id=2;
+					side="LOGIC";
+					vehicle="ACE_Vehicledamage_Enable_Cookoff";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item1
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={320.87439,10.14992,10118.227};
+					id=3;
+					side="LOGIC";
+					vehicle="ace_sys_repair_tyres";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item2
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={291.06348,10.14992,10116.808};
+					id=4;
+					side="LOGIC";
+					vehicle="ACE_Wounds_Logic";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item3
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={266.45758,10.137926,10117.28};
+					id=5;
+					side="LOGIC";
+					vehicle="ACE_SYS_PRespawn_Logic";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item4
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={264.09164,10.107943,10140.467};
+					id=6;
+					side="LOGIC";
+					vehicle="ACE_FBCB2_OFF_Logic";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item5
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={291.80191,10.137926,10141.684};
+					id=24;
+					side="LOGIC";
+					vehicle="WeatherParticlesManager";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item6
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={264.92993,10.095949,10162.257};
+					id=25;
+					side="LOGIC";
+					vehicle="FunctionsManager";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item7
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=5;
+				class Item0
+				{
+					position[]={5521.9326,109.46884,5861.4863};
+					azimut=178.771;
+					special="NONE";
+					id=27;
+					side="WEST";
+					vehicle="BAF_Soldier_SL_MTP";
+					player="PLAYER COMMANDER";
+					leader=1;
+					rank="LIEUTENANT";
+					skill=0.2;
+					text="blu_1_0_0_xo";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'0 / Platoon Commander";
+				};
+				class Item1
+				{
+					position[]={5522.459,109.46884,5861.9561};
+					azimut=178.771;
+					special="NONE";
+					id=28;
+					side="WEST";
+					vehicle="BAF_Soldier_Officer_MTP";
+					player="PLAY CDG";
+					rank="SERGEANT";
+					skill=0.2;
+					text="blu_1_0_1_xo_1";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'0 / Platoon Signaller";
+				};
+				class Item2
+				{
+					position[]={5521.2207,109.46884,5861.8843};
+					azimut=178.771;
+					special="NONE";
+					id=29;
+					side="WEST";
+					vehicle="BAF_Soldier_SL_MTP";
+					player="PLAY CDG";
+					rank="SERGEANT";
+					skill=0.2;
+					text="blu_1_0_2_xo_1";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'0 / Platoon Sergeant";
+				};
+				class Item3
+				{
+					position[]={5520.417,109.46884,5862.4668};
+					azimut=178.771;
+					special="NONE";
+					id=30;
+					side="WEST";
+					vehicle="BAF_Soldier_Sniper_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_0_2_l115";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'0 / Platoon Marksman";
+				};
+				class Item4
+				{
+					position[]={5519.561,109.46884,5862.9434};
+					azimut=178.771;
+					special="NONE";
+					id=31;
+					side="WEST";
+					vehicle="BAF_Soldier_Medic_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_0_2_m";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'0 / Platoon Medic";
+				};
+			};
+		};
+		class Item8
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=9;
+				class Item0
+				{
+					position[]={5513.668,109.46884,5861.2231};
+					azimut=178.771;
+					special="NONE";
+					id=32;
+					side="WEST";
+					vehicle="BAF_Soldier_SL_MTP";
+					player="PLAY CDG";
+					leader=1;
+					rank="SERGEANT";
+					skill=0.2;
+					text="blu_1_1_0_sl_1";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'1 / Squad Leader";
+				};
+				class Item1
+				{
+					position[]={5514.1943,109.46884,5861.6929};
+					azimut=178.771;
+					special="NONE";
+					id=33;
+					side="WEST";
+					vehicle="BAF_Soldier_TL_MTP";
+					player="PLAY CDG";
+					rank="CORPORAL";
+					skill=0.2;
+					text="blu_1_1_1_sl";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'1 / Charlie Fire Team / Team Lead";
+				};
+				class Item2
+				{
+					position[]={5514.8384,109.46884,5862.2124};
+					azimut=178.771;
+					special="NONE";
+					id=34;
+					side="WEST";
+					vehicle="BAF_Soldier_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_1_1_ls";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'1 / Charlie Fire Team / Lead Scout";
+				};
+				class Item3
+				{
+					position[]={5515.5435,109.46884,5862.7456};
+					azimut=178.771;
+					special="NONE";
+					id=35;
+					side="WEST";
+					vehicle="BAF_Soldier_GL_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_1_1_ugl";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'1 / Charlie Fire Team / Rifleman (UGL)";
+				};
+				class Item4
+				{
+					position[]={5516.041,109.46884,5863.1021};
+					azimut=178.771;
+					special="NONE";
+					id=36;
+					side="WEST";
+					vehicle="BAF_Soldier_MG_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_1_1_lmg";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'1 / Charlie Fire Team / LMG Gunner";
+				};
+				class Item5
+				{
+					position[]={5512.9561,109.46884,5861.6211};
+					azimut=178.771;
+					special="NONE";
+					id=37;
+					side="WEST";
+					vehicle="BAF_Soldier_TL_MTP";
+					player="PLAY CDG";
+					rank="CORPORAL";
+					skill=0.2;
+					text="blu_1_1_2_sl";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'1 / Delta Fire Team / Team Lead";
+				};
+				class Item6
+				{
+					position[]={5512.1523,109.46884,5862.2036};
+					azimut=178.771;
+					special="NONE";
+					id=38;
+					side="WEST";
+					vehicle="BAF_Soldier_GL_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_1_2_ugl";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'1 / Delta Fire Team / Rifleman (UGL)";
+				};
+				class Item7
+				{
+					position[]={5511.2964,109.46884,5862.6802};
+					azimut=178.771;
+					special="NONE";
+					id=39;
+					side="WEST";
+					vehicle="BAF_Soldier_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_1_2_lsw";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'1 / Delta Fire Team / Rifleman (LSW)";
+				};
+				class Item8
+				{
+					position[]={5510.6226,109.46884,5863.0928};
+					azimut=178.771;
+					special="NONE";
+					id=40;
+					side="WEST";
+					vehicle="BAF_Soldier_MG_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_1_2_gpmg";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'1 / Delta Fire Team / GPMG Gunner";
+				};
+			};
+		};
+		class Item9
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=9;
+				class Item0
+				{
+					position[]={5506.7886,109.46884,5861.3638};
+					azimut=178.771;
+					special="NONE";
+					id=41;
+					side="WEST";
+					vehicle="BAF_Soldier_SL_MTP";
+					player="PLAY CDG";
+					leader=1;
+					rank="SERGEANT";
+					skill=0.2;
+					text="blu_1_2_0_sl";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'2 / Squad Leader";
+				};
+				class Item1
+				{
+					position[]={5507.3149,109.46884,5861.8335};
+					azimut=178.771;
+					special="NONE";
+					id=42;
+					side="WEST";
+					vehicle="BAF_Soldier_TL_MTP";
+					player="PLAY CDG";
+					rank="CORPORAL";
+					skill=0.2;
+					text="blu_1_2_1_sl";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'2 / Charlie Fire Team / Team Lead";
+				};
+				class Item2
+				{
+					position[]={5507.959,109.46884,5862.353};
+					azimut=178.771;
+					special="NONE";
+					id=43;
+					side="WEST";
+					vehicle="BAF_Soldier_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_2_1_ls";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'2 / Charlie Fire Team / Lead Scout";
+				};
+				class Item3
+				{
+					position[]={5508.6641,109.46884,5862.8862};
+					azimut=178.771;
+					special="NONE";
+					id=44;
+					side="WEST";
+					vehicle="BAF_Soldier_GL_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_2_1_ugl";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'2 / Charlie Fire Team / Rifleman (UGL)";
+				};
+				class Item4
+				{
+					position[]={5509.1616,109.46884,5863.2427};
+					azimut=178.771;
+					special="NONE";
+					id=45;
+					side="WEST";
+					vehicle="BAF_Soldier_MG_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_2_1_lmg";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'2 / Charlie Fire Team / LMG Gunner";
+				};
+				class Item5
+				{
+					position[]={5506.0767,109.46884,5861.7617};
+					azimut=178.771;
+					special="NONE";
+					id=46;
+					side="WEST";
+					vehicle="BAF_Soldier_TL_MTP";
+					player="PLAY CDG";
+					rank="CORPORAL";
+					skill=0.2;
+					text="blu_1_2_2_sl";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'2 / Delta Fire Team / Team Lead";
+				};
+				class Item6
+				{
+					position[]={5505.2729,109.46884,5862.3442};
+					azimut=178.771;
+					special="NONE";
+					id=47;
+					side="WEST";
+					vehicle="BAF_Soldier_GL_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_2_2_ugl";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'2 / Delta Fire Team / Rifleman (UGL)";
+				};
+				class Item7
+				{
+					position[]={5504.417,109.46884,5862.8208};
+					azimut=178.771;
+					special="NONE";
+					id=48;
+					side="WEST";
+					vehicle="BAF_Soldier_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_2_2_lsw";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'2 / Delta Fire Team / Rifleman (LSW)";
+				};
+				class Item8
+				{
+					position[]={5503.7432,109.46884,5863.2334};
+					azimut=178.771;
+					special="NONE";
+					id=49;
+					side="WEST";
+					vehicle="BAF_Soldier_MG_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_2_2_gpmg";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'2 / Delta Fire Team / GPMG Gunner";
+				};
+			};
+		};
+		class Item10
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=9;
+				class Item0
+				{
+					position[]={5499.6001,109.46884,5861.082};
+					azimut=178.771;
+					special="NONE";
+					id=50;
+					side="WEST";
+					vehicle="BAF_Soldier_SL_MTP";
+					player="PLAY CDG";
+					leader=1;
+					rank="SERGEANT";
+					skill=0.2;
+					text="blu_1_3_0_sl";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'3 / Squad Leader";
+				};
+				class Item1
+				{
+					position[]={5500.1265,109.46884,5861.5518};
+					azimut=178.771;
+					special="NONE";
+					id=51;
+					side="WEST";
+					vehicle="BAF_Soldier_TL_MTP";
+					player="PLAY CDG";
+					rank="CORPORAL";
+					skill=0.2;
+					text="blu_1_3_1_sl";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'3 / Charlie Fire Team / Team Lead";
+				};
+				class Item2
+				{
+					position[]={5500.7705,109.46884,5862.0713};
+					azimut=178.771;
+					special="NONE";
+					id=52;
+					side="WEST";
+					vehicle="BAF_Soldier_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_3_1_ls";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'3 / Charlie Fire Team / Lead Scout";
+				};
+				class Item3
+				{
+					position[]={5501.4756,109.46884,5862.6045};
+					azimut=178.771;
+					special="NONE";
+					id=53;
+					side="WEST";
+					vehicle="BAF_Soldier_GL_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_3_1_ugl";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'3 / Charlie Fire Team / Rifleman (UGL)";
+				};
+				class Item4
+				{
+					position[]={5501.9731,109.46884,5862.9609};
+					azimut=178.771;
+					special="NONE";
+					id=54;
+					side="WEST";
+					vehicle="BAF_Soldier_MG_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_3_1_lmg";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'3 / Charlie Fire Team / LMG Gunner";
+				};
+				class Item5
+				{
+					position[]={5498.8882,109.46884,5861.48};
+					azimut=178.771;
+					special="NONE";
+					id=55;
+					side="WEST";
+					vehicle="BAF_Soldier_TL_MTP";
+					player="PLAY CDG";
+					rank="CORPORAL";
+					skill=0.2;
+					text="blu_1_3_2_sl";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'3 / Delta Fire Team / Team Lead";
+				};
+				class Item6
+				{
+					position[]={5498.0845,109.46884,5862.0625};
+					azimut=178.771;
+					special="NONE";
+					id=56;
+					side="WEST";
+					vehicle="BAF_Soldier_GL_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_3_2_ugl";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'3 / Delta Fire Team / Rifleman (UGL)";
+				};
+				class Item7
+				{
+					position[]={5497.2285,109.46884,5862.5391};
+					azimut=178.771;
+					special="NONE";
+					id=57;
+					side="WEST";
+					vehicle="BAF_Soldier_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_3_2_lsw";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'3 / Delta Fire Team / Rifleman (LSW)";
+				};
+				class Item8
+				{
+					position[]={5496.5547,109.46884,5862.9517};
+					azimut=178.771;
+					special="NONE";
+					id=58;
+					side="WEST";
+					vehicle="BAF_Soldier_MG_MTP";
+					player="PLAY CDG";
+					skill=0.2;
+					text="blu_1_3_2_gpmg";
+					init="nul = [this] execVM 'shortcuts\player.sqf';";
+					description="1'3 / Delta Fire Team / GPMG Gunner";
+				};
+			};
+		};
+	};
+	class Vehicles
+	{
+		items=20;
+		class Item0
+		{
+			position[]={5461.6953,109.46884,5871.4185};
+			azimut=96.034348;
+			id=0;
+			side="EMPTY";
+			vehicle="BAF_Jackal2_GMG_D";
+			leader=1;
+			skill=0.60000002;
+		};
+		class Item1
+		{
+			position[]={5526.3789,109.5531,5828.3843};
+			id=1;
+			side="EMPTY";
+			vehicle="CH_47F_BAF";
+			skill=0.60000002;
+		};
+		class Item2
+		{
+			position[]={10232.638,11.217916,10233.853};
+			azimut=-179.24937;
+			id=7;
+			side="EMPTY";
+			vehicle="Fort_RazorWire";
+			lock="UNLOCKED";
+			skill=0.60000002;
+		};
+		class Item3
+		{
+			position[]={10225.538,10.005997,10233.935};
+			azimut=-179.24937;
+			id=8;
+			side="EMPTY";
+			vehicle="Fort_RazorWire";
+			lock="UNLOCKED";
+			skill=0.60000002;
+		};
+		class Item4
+		{
+			position[]={10218.378,10.005997,10233.995};
+			azimut=-179.24937;
+			id=9;
+			side="EMPTY";
+			vehicle="Fort_RazorWire";
+			lock="UNLOCKED";
+			skill=0.60000002;
+		};
+		class Item5
+		{
+			position[]={10211.485,10.005997,10234.017};
+			azimut=-179.24937;
+			id=10;
+			side="EMPTY";
+			vehicle="Fort_RazorWire";
+			lock="UNLOCKED";
+			skill=0.60000002;
+		};
+		class Item6
+		{
+			position[]={10235.078,12.093618,10231.461};
+			azimut=-269.72394;
+			id=11;
+			side="EMPTY";
+			vehicle="Fort_RazorWire";
+			lock="UNLOCKED";
+			skill=0.60000002;
+		};
+		class Item7
+		{
+			position[]={10235.05,10,10224.363};
+			azimut=-269.72394;
+			id=12;
+			side="EMPTY";
+			vehicle="Fort_RazorWire";
+			lock="UNLOCKED";
+			skill=0.60000002;
+		};
+		class Item8
+		{
+			position[]={10235.049,10,10217.2};
+			azimut=-269.72394;
+			id=13;
+			side="EMPTY";
+			vehicle="Fort_RazorWire";
+			lock="UNLOCKED";
+			skill=0.60000002;
+		};
+		class Item9
+		{
+			position[]={10235.087,10,10210.306};
+			azimut=-269.72394;
+			id=14;
+			side="EMPTY";
+			vehicle="Fort_RazorWire";
+			lock="UNLOCKED";
+			skill=0.60000002;
+		};
+		class Item10
+		{
+			position[]={10206.462,10.005997,10232.149};
+			azimut=-269.72394;
+			id=15;
+			side="EMPTY";
+			vehicle="Fort_RazorWire";
+			lock="UNLOCKED";
+			skill=0.60000002;
+		};
+		class Item11
+		{
+			position[]={10206.437,10.005997,10225.056};
+			azimut=-269.72394;
+			id=16;
+			side="EMPTY";
+			vehicle="Fort_RazorWire";
+			lock="UNLOCKED";
+			skill=0.60000002;
+		};
+		class Item12
+		{
+			position[]={10206.437,10.005997,10217.896};
+			azimut=-269.72394;
+			id=17;
+			side="EMPTY";
+			vehicle="Fort_RazorWire";
+			lock="UNLOCKED";
+			skill=0.60000002;
+		};
+		class Item13
+		{
+			position[]={10206.47,10.005997,10210.997};
+			azimut=-269.72394;
+			id=18;
+			side="EMPTY";
+			vehicle="Fort_RazorWire";
+			lock="UNLOCKED";
+			skill=0.60000002;
+		};
+		class Item14
+		{
+			position[]={10232.063,10.005997,10205.517};
+			azimut=-179.24937;
+			id=19;
+			side="EMPTY";
+			vehicle="Fort_RazorWire";
+			lock="UNLOCKED";
+			skill=0.60000002;
+		};
+		class Item15
+		{
+			position[]={10224.964,10.005997,10205.599};
+			azimut=-179.24937;
+			id=20;
+			side="EMPTY";
+			vehicle="Fort_RazorWire";
+			lock="UNLOCKED";
+			skill=0.60000002;
+		};
+		class Item16
+		{
+			position[]={10217.805,10.005997,10205.66};
+			azimut=-179.24937;
+			id=21;
+			side="EMPTY";
+			vehicle="Fort_RazorWire";
+			lock="UNLOCKED";
+			skill=0.60000002;
+		};
+		class Item17
+		{
+			position[]={10210.91,10.005997,10205.681};
+			azimut=-179.24937;
+			id=22;
+			side="EMPTY";
+			vehicle="Fort_RazorWire";
+			lock="UNLOCKED";
+			skill=0.60000002;
+		};
+		class Item18
+		{
+			position[]={10221.623,10.005997,10219.529};
+			id=23;
+			side="EMPTY";
+			vehicle="HeliHEmpty";
+			skill=0.2;
+			text="specPen";
+		};
+		class Item19
+		{
+			position[]={5527.2031,109.54932,5845.9336};
+			id=26;
+			side="EMPTY";
+			vehicle="ACE_ItemsBox";
+			skill=0.60000002;
+			init="_nil = this execVM ""ammo.sqf"";";
+		};
+	};
+	class Markers
+	{
+		items=3;
+		class Item0
+		{
+			position[]={5518.6211,109.46884,5852.6211};
+			name="setup_area_blue";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorBlue";
+			fillName="Border";
+			a=250;
+			b=75;
+			angle=348.66101;
+			drawBorder=1;
+		};
+		class Item1
+		{
+			position[]={9798.3252,16.147917,4907.2983};
+			name="west_extractArea";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorBlue";
+			fillName="Border";
+			a=400;
+			b=4000;
+			drawBorder=1;
+		};
+		class Item2
+		{
+			position[]={462.5191,20.412659,4723.8208};
+			name="east_extractArea";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorRed";
+			fillName="Border";
+			a=400;
+			b=4000;
+			drawBorder=1;
+		};
+	};
+};
+class Intro
+{
+	addOns[]=
+	{
+		"fata"
+	};
+	addOnsAuto[]=
+	{
+		"fata"
+	};
+	randomSeed=12395772;
+	class Intel
+	{
+		startWeather=0;
+		forecastWeather=0;
+		year=2012;
+		month=3;
+		day=12;
+		hour=12;
+		minute=0;
+	};
+};
+class OutroWin
+{
+	addOns[]=
+	{
+		"fata"
+	};
+	addOnsAuto[]=
+	{
+		"fata"
+	};
+	randomSeed=8541179;
+	class Intel
+	{
+		startWeather=0;
+		forecastWeather=0;
+		year=2012;
+		month=3;
+		day=12;
+		hour=12;
+		minute=0;
+	};
+};
+class OutroLoose
+{
+	addOns[]=
+	{
+		"fata"
+	};
+	addOnsAuto[]=
+	{
+		"fata"
+	};
+	randomSeed=7919258;
+	class Intel
+	{
+		startWeather=0;
+		forecastWeather=0;
+		year=2012;
+		month=3;
+		day=12;
+		hour=12;
+		minute=0;
+	};
+};
